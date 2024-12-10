@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 1057660445}
   - component: {fileID: 1057660444}
   - component: {fileID: 1057660446}
+  - component: {fileID: 1057660447}
   m_Layer: 0
   m_Name: NuclearShark
   m_TagString: Untagged
@@ -961,6 +962,41 @@ MonoBehaviour:
   swaySpeed: 2
   swayAmount: 10
   forwardSpeed: 2
+--- !u!70 &1057660447
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057660443}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 12.6, y: 9.8}
+  m_Direction: 1
 --- !u!1 &1081333178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,6 +1601,7 @@ GameObject:
   - component: {fileID: 1458448265}
   - component: {fileID: 1458448268}
   - component: {fileID: 1458448267}
+  - component: {fileID: 1458448269}
   m_Layer: 0
   m_Name: Submarine_Character
   m_TagString: Player
@@ -1688,6 +1725,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &1458448269
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458448264}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.27, y: -0.56}
+  m_Size: {x: 6.28, y: 9.76}
+  m_Direction: 0
 --- !u!1 &1581088055
 GameObject:
   m_ObjectHideFlags: 0
