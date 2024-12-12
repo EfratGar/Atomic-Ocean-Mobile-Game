@@ -1,37 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class Monster : MonoBehaviour, IDamageableMonster
+public class Monster : MonoBehaviour, IDamageable
 {
 
-    private int currentMonsterHp;
+    private int _currentMonsterHp;
     [SerializeField] private int maxMonsterHp = 8;
-    private int monsterAttackPower;
+    private int _monsterAttackPower;
+
+    private void Start()
+    {
+        _currentMonsterHp = maxMonsterHp;
+    }
 
     public void TakeDamage(int damageTaken)
     {
-        if (currentMonsterHp > 0)
+        if (_currentMonsterHp > 0)
         {
-            currentMonsterHp -= damageTaken;
-
+            _currentMonsterHp -= damageTaken;
+            Debug.Log("Monster's damaged");
         }
-        else if (currentMonsterHp <= 0)
+        if (_currentMonsterHp <= 0)
         {
             Die();
+            Debug.Log("Monster died.");
         }
     }
 
     public void Die()
     {
-        Debug.Log("temp die message");
-
+        //Here will be dead monster animation
+        Destroy(gameObject);
     }
 
     public int MonsterAttack()
     {
-        return Random.Range(3, monsterAttackPower);
+        return Random.Range(3, _monsterAttackPower);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(2);
+        }
+    }
 
 }

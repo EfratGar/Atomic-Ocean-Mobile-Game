@@ -1,9 +1,12 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Character_Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    [Header("Movement")]
     [SerializeField] private float thrustForce = 15.0f;
     [SerializeField] private float maxSpeed = 15.0f;
     [SerializeField] private float quickTurnMultiplier = 2.0f;
@@ -11,11 +14,11 @@ public class Character_Movement : MonoBehaviour
     [SerializeField] private float tiltSmoothness = 3.0f;
     [SerializeField] private float floatStrength = 0.5f;
 
-    // Shooting
+    [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.5f;
-    private float nextFireTime = 0f;
+    private bool _canShoot;
 
 
     private float baseY;
@@ -24,11 +27,18 @@ public class Character_Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         baseY = transform.position.y; 
+        _canShoot = true;
     }
 
     void Update()
     {
-        HandleInput();
+        bool isPressing = HandleInput();
+        if(isPressing && _canShoot)
+        {
+            Shoot();
+            _canShoot = false;
+            ShootCooldown();
+        }        
         ApplyTilt();
         ApplyFloatingEffect();
         ClampPosition();
@@ -49,32 +59,37 @@ public class Character_Movement : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
-    private void HandleInput()
+    private bool HandleInput()
     {
+        bool isPressing = false;
+#if UNITY_EDITOR
+        // Mouse Input
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            if (mousePosition.x > Screen.width / 2f)
+                ApplyThrust(Vector2.right);
+            else
+                ApplyThrust(Vector2.left);
+            isPressing = true;
+        }
+#else
         // Mobile Input
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
-                Shoot();
 
             if (touch.position.x > Screen.width / 2)
                 ApplyThrust(Vector2.right);
             else
                 ApplyThrust(Vector2.left);
-        }
-        // Mouse Input
-        else if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
 
-            Vector3 mousePosition = Input.mousePosition;
-            if (mousePosition.x > Screen.width / 2)
-                ApplyThrust(Vector2.right);
-            else
-                ApplyThrust(Vector2.left);
+            isPressing = true;
         }
+#endif
+        return isPressing;
     }
 
     private void ApplyTilt()
@@ -113,5 +128,11 @@ public class Character_Movement : MonoBehaviour
     private void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+    }
+
+    private async void ShootCooldown()
+    {
+        await Task.Delay(TimeSpan.FromSeconds(fireRate));
+        _canShoot = true;
     }
 }
