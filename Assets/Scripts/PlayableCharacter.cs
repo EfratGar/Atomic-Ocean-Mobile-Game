@@ -46,6 +46,14 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         Debug.Log("You died.");
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            TakeDamage(10);
+        }
+    }
+
     private void OnGotHit()
     {
         TakeDamage(25);

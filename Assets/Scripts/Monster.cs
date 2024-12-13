@@ -12,19 +12,15 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] private int maxMonsterHp = 8;
     private int _monsterAttackPower;
 
-    [SerializeField] private float attackRate;
-    public event Action<Vector2> OnAttackPlayer = delegate { };
+
+    public event Action OnAttackPlayer = delegate { };
     public static event Action OnHitPlayer = delegate { };
-    public event Action OnNavAgentBasedMovementEnded = delegate { };
-    private CancellationTokenSource cancellationTokenSource;
+
 
 
     private void Start()
     {
         _currentMonsterHp = maxMonsterHp;
-        cancellationTokenSource = new CancellationTokenSource();
-        AttackPlayer();
-        GetComponent<EnemyAI>().OnAttackEnded += OnAttackEnded;
     }
 
     public void TakeDamage(int damageTaken)
@@ -41,11 +37,11 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         //Here will be dead monster animation
         Destroy(gameObject);
-        cancellationTokenSource.Cancel();
+
     }
 
     public int MonsterAttack()
@@ -67,18 +63,9 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    private async void AttackPlayer()
+    protected void InvokeOnAttackPlayerEvent()
     {
-        await Task.Delay(TimeSpan.FromSeconds(attackRate));
-        if (cancellationTokenSource.Token.IsCancellationRequested)
-            return;
-        OnAttackPlayer(transform.position);
-    }
-
-    private void OnAttackEnded()
-    {
-        OnNavAgentBasedMovementEnded();
-        AttackPlayer();
+        OnAttackPlayer();
     }
 
 

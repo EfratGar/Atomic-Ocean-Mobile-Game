@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Bullet
+  - Spike
   layers:
   - Default
   - TransparentFX

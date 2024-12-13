@@ -17,9 +17,9 @@ public class SharkMovement : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        Monster monster = GetComponent<Monster>();
-        monster.OnAttackPlayer += (pos) => _shouldMove = false;
-        monster.OnNavAgentBasedMovementEnded += OnStartMoving;
+        Shark shark = GetComponent<Shark>();
+        shark.OnAttackPlayer += () => _shouldMove = false;
+        shark.OnNavAgentBasedMovementEnded += OnStartMoving;
         _timer = 0f;
         _shouldMove = true;
     }

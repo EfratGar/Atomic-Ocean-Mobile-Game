@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(target.position);
     }
 
-    private void BeginAttackOnPlayer(Vector2 initPos)
+    private void BeginAttackOnPlayer()
     {
         SetNavAgentState(true);
         agent.speed = _attackSpeed;
