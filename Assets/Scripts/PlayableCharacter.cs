@@ -10,10 +10,12 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     private int maxAttackPower;
     private int playerLevel = 1;
     [SerializeField] TMP_Text DamageText;
+    [SerializeField] private float hitCooldown;
 
     private void Start()
     {
         DamageText.gameObject.SetActive(false);
+        Monster.OnHitPlayer += OnGotHit;
     }
 
 
@@ -44,19 +46,16 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         Debug.Log("You died.");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnGotHit()
     {
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-                TakeDamage(25);
-                DamageText.gameObject.SetActive(true);
-            
-        }
+        TakeDamage(25);
+        DisplayDamage();
     }
 
-    private async void OnTriggerExit2D(Collider2D collision)
+    private async void DisplayDamage()
     {
-        //await Task.Delay(1000);
+        DamageText.gameObject.SetActive(true);
+        await Task.Delay(1000);
         DamageText.gameObject.SetActive(false);
     }
 
