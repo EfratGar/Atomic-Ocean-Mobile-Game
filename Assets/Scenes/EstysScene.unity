@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMonsterHp: 8
-  attackRate: 5
+  attackRate: 1
 --- !u!114 &1057660449
 MonoBehaviour:
   m_ObjectHideFlags: 0
