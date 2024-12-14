@@ -15,8 +15,14 @@ public class Shark : Monster
     {
         base.Start();
         cancellationTokenSource = new CancellationTokenSource();
-        AttackPlayer();
+
         GetComponent<EnemyAI>().OnAttackEnded += OnAttackEnded;
+    }
+
+    protected override void OnEnteredScene()
+    {
+        base.OnEnteredScene();
+        AttackPlayer();
     }
 
     public override void Die()

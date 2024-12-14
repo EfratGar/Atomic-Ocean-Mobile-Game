@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class JellyFish : Monster
@@ -13,53 +8,18 @@ public class JellyFish : Monster
     [SerializeField] private float forwardSpeed = 2.0f;
     [SerializeField] private ParticleSystem jellyFishShoot;
     private Vector3 startPosition;
- 
 
-    [Header("Enterance settings")]
-    [SerializeField] private Transform startDestination;
-    [SerializeField] private float transitionToStartPositionDuration;
-
-    private bool bossEnteredScene = false;
-
-
-
-    protected async override void Start()
-    {
-        base.Start();
-        startDestination.parent = null;
-        await EnterAnimation();
-    }
 
     private void Update()
     {
-        if (bossEnteredScene)
-        {
-            ApplySwimAnimation();
-        }
+        ApplySwimAnimation();
     }
 
-
-    private async Task EnterAnimation()
+    protected override void OnEnteredScene()
     {
-        await LerpTo(startDestination.position, transitionToStartPositionDuration);
+        base.OnEnteredScene();
+        startPosition = transform.position;
         jellyFishShoot.Play();
-
-    }
-
-    private async Task LerpTo(Vector3 destination, float duration)
-    {
-        float time = 0f;
-        float percentage = 0f;
-        Vector3 startPos = transform.position;
-        while (time < duration)
-        {
-            transform.position = Vector3.Lerp(startPos, destination, percentage);
-            float deltaTime = Time.deltaTime;
-            time += deltaTime;
-            percentage = time / duration;
-            await Task.Delay(TimeSpan.FromSeconds(deltaTime));
-        }
-        bossEnteredScene = true;
     }
 
     private void ApplySwimAnimation()
@@ -68,9 +28,8 @@ public class JellyFish : Monster
         transform.rotation = Quaternion.Euler(0, 0, sway);
 
         float swimY = Mathf.Sin(Time.time * swaySpeed * 0.5f) * 0.5f;
-        Vector3 destination = new Vector3(transform.position.x, startPosition.y + swimY, transform.position.z);
+        Vector3 destination = new(transform.position.x, startPosition.y + swimY, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime);
-        transform.Translate(forwardSpeed * Time.deltaTime * Vector3.up);
     }
 
     public override void Die()
@@ -78,6 +37,4 @@ public class JellyFish : Monster
         base.Die();
         jellyFishShoot.Stop();
     }
-
-
 }

@@ -15,12 +15,15 @@ public class Monster : MonoBehaviour, IDamageable
 
     public event Action OnAttackPlayer = delegate { };
     public static event Action OnHitPlayer = delegate { };
+    public event Action OnReady = delegate { };
 
 
 
     protected virtual void Start()
     {
+        enabled = false;
         _currentMonsterHp = maxMonsterHp;
+        GetComponent<EnterLevel>().OnEnteredScene += OnEnteredScene;
     }
 
     public void TakeDamage(int damageTaken)
@@ -35,6 +38,12 @@ public class Monster : MonoBehaviour, IDamageable
             Die();
             Debug.Log("Monster died.");
         }
+    }
+
+    protected virtual void OnEnteredScene() 
+    {
+        enabled = true;
+        OnReady();
     }
 
     public virtual void Die()

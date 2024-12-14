@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SharkMovement : MonoBehaviour
 {
@@ -10,18 +11,16 @@ public class SharkMovement : MonoBehaviour
 
 
     private Vector3 startPosition;
-    private float _timer;
     private bool _shouldMove;
     
 
     void Start()
     {
-        startPosition = transform.position;
+        enabled = false;
         Shark shark = GetComponent<Shark>();
         shark.OnAttackPlayer += () => _shouldMove = false;
-        shark.OnNavAgentBasedMovementEnded += OnStartMoving;
-        _timer = 0f;
-        _shouldMove = true;
+        shark.OnNavAgentBasedMovementEnded += OnStartMovingBackUp;
+        shark.OnReady += StartMoving;
     }
 
     void Update()
@@ -33,23 +32,26 @@ public class SharkMovement : MonoBehaviour
     private void ApplySwimAnimation()
     {
         float sway = Mathf.Sin(Time.time * swaySpeed) * swayAmount;
-        transform.rotation = Quaternion.Euler(0, 0, sway);
+        Quaternion targetRotation = Quaternion.Euler(0, 0, sway);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime);
         if (_shouldMove)
         {
-            float swimY = Mathf.Sin(_timer * swaySpeed * 0.5f) * 0.5f;
-            transform.position = new Vector3(transform.position.x, startPosition.y + swimY, transform.position.z);
-
-            transform.Translate(forwardSpeed * Time.deltaTime * Vector3.down);
-            _timer += Time.deltaTime;
+            float swimY = Mathf.Sin(Time.time * swaySpeed * 0.5f) * 0.5f;
+            Vector3 destination = new(transform.position.x, startPosition.y + swimY, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime);
         }
-
-
     }
 
-    private void OnStartMoving()
+    private void StartMoving()
     {
         startPosition = transform.position;
-        _timer = 0f;
+        enabled = true;
+        _shouldMove = true;
+    }
+
+    private void OnStartMovingBackUp()
+    {
+        startPosition = transform.position;
         _shouldMove = true;
     }
 

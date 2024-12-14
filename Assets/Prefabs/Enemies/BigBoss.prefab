@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1449622154273836574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.900002, y: -9.3, z: -1.1045877}
+  m_LocalPosition: {x: 21.900002, y: -12.8, z: -1.1045877}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4947,6 +4947,7 @@ GameObject:
   - component: {fileID: 2845553791754410490}
   - component: {fileID: 1668936198995969276}
   - component: {fileID: 2432863995781914465}
+  - component: {fileID: 8667435700958673157}
   m_Layer: 6
   m_Name: BigBoss
   m_TagString: Monster
@@ -5067,8 +5068,6 @@ MonoBehaviour:
   swayAmount: 5
   forwardSpeed: 2
   jellyFishShoot: {fileID: 4819610951502536780}
-  startDestination: {fileID: 5337670555947959718}
-  transitionToStartPositionDuration: 2
 --- !u!58 &2432863995781914465
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5104,3 +5103,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5.12
+--- !u!114 &8667435700958673157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164752004138407864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee5818e657396148b43f6cf3d18980d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDestination: {fileID: 5337670555947959718}
+  transitionToStartPositionDuration: 2

@@ -26,14 +26,20 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        enabled = false;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         _attackSpeed = agent.speed;
         agent.enabled = false;
         _initPosY = transform.position.y;
-        GetComponent<Monster>().OnAttackPlayer += BeginAttackOnPlayer;
+
+        Monster monster = GetComponent<Monster>();
+        monster.OnAttackPlayer += BeginAttackOnPlayer;
         Monster.OnHitPlayer += OnHitPlayer;
+        monster.OnReady += () => enabled = true;
+
+        target = FindObjectOfType<PlayableCharacter>().transform;
     }
 
     private void Update()

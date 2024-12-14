@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &591435925878605083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5235064192011153235}
+  m_Layer: 0
+  m_Name: StartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5235064192011153235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591435925878605083}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -74.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6257617504353484483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2338392524923116535
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +47,7 @@ GameObject:
   - component: {fileID: 8430606095160185003}
   - component: {fileID: 3354951530446194337}
   - component: {fileID: 4967073443088462592}
+  - component: {fileID: 1437429983036357457}
   m_Layer: 0
   m_Name: NuclearPaffFish
   m_TagString: Monster
@@ -38,6 +70,7 @@ Transform:
   m_Children:
   - {fileID: 4208257422252794167}
   - {fileID: 2846422480541984334}
+  - {fileID: 5235064192011153235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8796474501467591010
@@ -250,6 +283,20 @@ MonoBehaviour:
   spikeBullet: {fileID: 8691729662658933592, guid: efef678be024d704385291ac88e6fd30, type: 3}
   maxFireRate: 6
   minFireRate: 3
+--- !u!114 &1437429983036357457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2338392524923116535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee5818e657396148b43f6cf3d18980d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDestination: {fileID: 5235064192011153235}
+  transitionToStartPositionDuration: 1
 --- !u!1 &5345159719512920791
 GameObject:
   m_ObjectHideFlags: 0

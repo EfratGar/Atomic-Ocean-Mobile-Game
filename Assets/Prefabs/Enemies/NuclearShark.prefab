@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2478982149703970517}
   - component: {fileID: 717560080387232604}
   - component: {fileID: 8822486143349164281}
+  - component: {fileID: 6158263599597820252}
   m_Layer: 0
   m_Name: NuclearShark
   m_TagString: Monster
@@ -34,7 +35,8 @@ Transform:
   m_LocalPosition: {x: -0.11, y: 2.08, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7229264195159691604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5421441367889513520
@@ -192,3 +194,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMonsterHp: 8
   attackRate: 3
+--- !u!114 &6158263599597820252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6823812553583319260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee5818e657396148b43f6cf3d18980d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDestination: {fileID: 7229264195159691604}
+  transitionToStartPositionDuration: 1
+--- !u!1 &9108589364520477606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7229264195159691604}
+  m_Layer: 0
+  m_Name: StartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7229264195159691604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108589364520477606}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.1, y: -15.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7627353279971981615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

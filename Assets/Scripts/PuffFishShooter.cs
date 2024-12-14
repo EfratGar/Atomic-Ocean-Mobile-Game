@@ -17,7 +17,7 @@ public class PuffFishShooter : MonoBehaviour
     private void Start()
     {
         shootingTime = UnityEngine.Random.Range(minFireRate, maxFireRate);
-        ShootCooldown();
+        GetComponent<Monster>().OnReady += () => ShootCooldown();
     }
 
     private void Update()
