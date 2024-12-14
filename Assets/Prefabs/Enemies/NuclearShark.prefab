@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b286e28da4d0c4abb66d5180b44e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMonsterHp: 8
+  maxMonsterHp: 20
   attackRate: 3
 --- !u!114 &6158263599597820252
 MonoBehaviour:

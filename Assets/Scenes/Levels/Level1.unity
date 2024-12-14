@@ -136,15 +136,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -25.9
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2
+      value: -3.82
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -197,15 +205,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 4.09
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -255,6 +271,14 @@ PrefabInstance:
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_Name
       value: NuclearPaffFish (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -97
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x

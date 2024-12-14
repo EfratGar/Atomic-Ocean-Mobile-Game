@@ -16,6 +16,7 @@ public class Monster : MonoBehaviour, IDamageable
     public event Action OnAttackPlayer = delegate { };
     public static event Action OnHitPlayer = delegate { };
     public event Action OnReady = delegate { };
+    public static event Action OnMonsterDied = delegate { };
 
 
 
@@ -50,7 +51,11 @@ public class Monster : MonoBehaviour, IDamageable
     {
         //Here will be dead monster animation
         Destroy(gameObject);
+    }
 
+    private void OnDestroy()
+    {
+        OnMonsterDied();
     }
 
     public int MonsterAttack()

@@ -7,8 +7,6 @@ using TMPro;
 public class PlayableCharacter : MonoBehaviour, IDamageable
 {
     private int playerHp = 100;
-    private int maxAttackPower;
-    private int playerLevel = 1;
     [SerializeField] TMP_Text DamageText;
     [SerializeField] private float hitCooldown;
 
@@ -17,14 +15,6 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         if(DamageText != null)
             DamageText.gameObject.SetActive(false);
         Monster.OnHitPlayer += OnGotHit;
-    }
-
-
-
-
-    public void PlayerLevelsUp()
-    {
-        playerLevel++;
     }
 
     public void TakeDamage(int damageTaken)
