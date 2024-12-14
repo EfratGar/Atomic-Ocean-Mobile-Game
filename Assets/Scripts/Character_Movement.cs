@@ -20,18 +20,23 @@ public class Character_Movement : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     private bool _canShoot;
 
+    private Camera mainCamera;
 
     private float baseY;
+    private Vector3 _prevPos;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         baseY = transform.position.y; 
         _canShoot = true;
+        mainCamera = Camera.main;
+        _prevPos = transform.position;
     }
 
     void Update()
     {
+
         bool isPressing = HandleInput();
         if(isPressing && _canShoot)
         {
@@ -42,6 +47,7 @@ public class Character_Movement : MonoBehaviour
         ApplyTilt();
         ApplyFloatingEffect();
         ClampPosition();
+        _prevPos = transform.position;
     }
 
     private void ApplyThrust(Vector2 direction)
@@ -66,25 +72,22 @@ public class Character_Movement : MonoBehaviour
         // Mouse Input
         if (Input.GetMouseButton(0))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            if (mousePosition.x > Screen.width / 2f)
-                ApplyThrust(Vector2.right);
-            else
-                ApplyThrust(Vector2.left);
+            MovePlayer(Input.mousePosition);
             isPressing = true;
         }
 #else
         // Mobile Input
         if (Input.touchCount > 0)
         {
+        
             Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
+            MovePlayer(touch.position);
+            /*if (touch.phase == TouchPhase.Began)
 
             if (touch.position.x > Screen.width / 2)
                 ApplyThrust(Vector2.right);
             else
-                ApplyThrust(Vector2.left);
+                ApplyThrust(Vector2.left);*/
 
             isPressing = true;
         }
@@ -92,9 +95,19 @@ public class Character_Movement : MonoBehaviour
         return isPressing;
     }
 
+    private void MovePlayer(Vector3 screenSpacePlayerDestination)
+    {
+        Vector3 worldPlayerDestination = mainCamera.ScreenToWorldPoint(screenSpacePlayerDestination);
+        worldPlayerDestination.y = transform.position.y;
+        worldPlayerDestination.z = 0f;
+        transform.position = worldPlayerDestination;
+    }
+
     private void ApplyTilt()
     {
-        float targetTiltZ = Mathf.Clamp(rb.velocity.x / thrustForce * -tiltAngle, -tiltAngle, tiltAngle);
+        float tiltDirection = (transform.position - _prevPos).x;
+        float targetTiltZ = Mathf.Clamp(Time.time * tiltDirection / thrustForce * -tiltAngle, 
+            -tiltAngle, tiltAngle);
         Quaternion targetRotation = Quaternion.Euler(0, 0, targetTiltZ);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * tiltSmoothness);
     }
