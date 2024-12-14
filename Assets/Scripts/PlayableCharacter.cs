@@ -14,7 +14,8 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        DamageText.gameObject.SetActive(false);
+        if(DamageText != null)
+            DamageText.gameObject.SetActive(false);
         Monster.OnHitPlayer += OnGotHit;
     }
 
@@ -65,11 +66,6 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         DamageText.gameObject.SetActive(true);
         await Task.Delay(1000);
         DamageText.gameObject.SetActive(false);
-    }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        Debug.Log("Test " + other.name);
     }
 
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3354951530446194337}
   - component: {fileID: 4967073443088462592}
   m_Layer: 0
-  m_Name: NuclearPaffFish (1)
+  m_Name: NuclearPaffFish
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

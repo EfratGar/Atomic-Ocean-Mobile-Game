@@ -26,6 +26,7 @@ public class JellyFish : Monster
     protected async override void Start()
     {
         base.Start();
+        startDestination.parent = null;
         await EnterAnimation();
     }
 
