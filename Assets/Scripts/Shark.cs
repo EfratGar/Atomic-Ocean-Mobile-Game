@@ -11,8 +11,9 @@ public class Shark : Monster
     public event Action OnNavAgentBasedMovementEnded = delegate { };
     private CancellationTokenSource cancellationTokenSource;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         cancellationTokenSource = new CancellationTokenSource();
         AttackPlayer();
         GetComponent<EnemyAI>().OnAttackEnded += OnAttackEnded;

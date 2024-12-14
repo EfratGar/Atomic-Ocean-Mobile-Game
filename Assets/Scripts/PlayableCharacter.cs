@@ -67,4 +67,9 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         DamageText.gameObject.SetActive(false);
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("Test " + other.name);
+    }
+
 }

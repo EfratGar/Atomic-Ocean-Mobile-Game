@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour, IDamageable
 
 
 
-    private void Start()
+    protected virtual void Start()
     {
         _currentMonsterHp = maxMonsterHp;
     }
@@ -58,8 +58,6 @@ public class Monster : MonoBehaviour, IDamageable
         else if (collision.gameObject.CompareTag("Player"))
         {
             OnHitPlayer();
-            //TakeDamage(25);
-            //DamageText.gameObject.SetActive(true);
         }
     }
 

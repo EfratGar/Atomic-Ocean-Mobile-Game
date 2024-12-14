@@ -46,11 +46,6 @@ public class SharkMovement : MonoBehaviour
 
     }
 
-    private void StopMoving(Vector2 pos)
-    {
-        _shouldMove = false;
-    }
-
     private void OnStartMoving()
     {
         startPosition = transform.position;

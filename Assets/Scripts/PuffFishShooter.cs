@@ -7,7 +7,6 @@ using UnityEngine;
 public class PuffFishShooter : MonoBehaviour
 {
     [SerializeField] GameObject spikeBullet;
-    //[SerializeField] private Transform spikeFirePoint;
     [SerializeField] private float maxFireRate;
     [SerializeField] private float minFireRate;
 
