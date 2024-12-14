@@ -36,33 +36,17 @@ public class Character_Movement : MonoBehaviour
 
     void Update()
     {
-
         bool isPressing = HandleInput();
         if(isPressing && _canShoot)
         {
             Shoot();
             _canShoot = false;
             ShootCooldown();
-        }        
+        }
         ApplyTilt();
         ApplyFloatingEffect();
         ClampPosition();
         _prevPos = transform.position;
-    }
-
-    private void ApplyThrust(Vector2 direction)
-    {
-        if (Mathf.Sign(rb.velocity.x) != Mathf.Sign(direction.x) || rb.velocity.x == 0)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            rb.AddForce(direction * thrustForce * quickTurnMultiplier, ForceMode2D.Impulse);
-        }
-        else
-        {
-            rb.AddForce(direction * thrustForce, ForceMode2D.Force);
-        }
-
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
     private bool HandleInput()
@@ -79,16 +63,8 @@ public class Character_Movement : MonoBehaviour
         // Mobile Input
         if (Input.touchCount > 0)
         {
-        
             Touch touch = Input.GetTouch(0);
             MovePlayer(touch.position);
-            /*if (touch.phase == TouchPhase.Began)
-
-            if (touch.position.x > Screen.width / 2)
-                ApplyThrust(Vector2.right);
-            else
-                ApplyThrust(Vector2.left);*/
-
             isPressing = true;
         }
 #endif
