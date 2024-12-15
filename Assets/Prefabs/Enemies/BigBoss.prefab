@@ -5068,7 +5068,8 @@ MonoBehaviour:
   swayAmount: 5
   forwardSpeed: 2
   jellyFishShoot: {fileID: 4819610951502536780}
-  electricSound: {fileID: 8300000, guid: 1f42c8ca733f7104cb35e3170180750e, type: 3}
+  electricSound: {fileID: 8300000, guid: 70e12e0136ac7a74d88d10a4a7f2f4b0, type: 3}
+  soundInterval: 2
 --- !u!58 &2432863995781914465
 CircleCollider2D:
   m_ObjectHideFlags: 0
