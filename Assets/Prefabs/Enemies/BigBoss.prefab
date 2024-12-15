@@ -4964,8 +4964,8 @@ Transform:
   m_GameObject: {fileID: 9164752004138407864}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.38, y: 3.19, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1472013137470955997}
@@ -5068,6 +5068,7 @@ MonoBehaviour:
   swayAmount: 5
   forwardSpeed: 2
   jellyFishShoot: {fileID: 4819610951502536780}
+  electricSound: {fileID: 8300000, guid: 1f42c8ca733f7104cb35e3170180750e, type: 3}
 --- !u!58 &2432863995781914465
 CircleCollider2D:
   m_ObjectHideFlags: 0
