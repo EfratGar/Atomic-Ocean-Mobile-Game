@@ -17,6 +17,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float attackMagnitude;
     [SerializeField] private float postAttackSpeed;
 
+    [Header("Audio settings")]
+    [SerializeField] private AudioClip attackSound; // Sound effect for shark biting the submarine
+    [SerializeField] private AudioClip swimSound;   // Sound effect for swimming motion
+
+    private AudioSource audioSource;
+    private bool isSwimmingSoundPlaying = false;
+
     NavMeshAgent agent;
 
     private float _initPosY;
@@ -34,6 +41,15 @@ public class EnemyAI : MonoBehaviour
         agent.enabled = false;
         _initPosY = transform.position.y;
 
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.loop = true; // Allow looping for swimming sound
+        audioSource.playOnAwake = false;
+
         Monster monster = GetComponent<Monster>();
         monster.OnAttackPlayer += BeginAttackOnPlayer;
         Monster.OnHitPlayer += OnHitPlayer;
@@ -47,26 +63,54 @@ public class EnemyAI : MonoBehaviour
         if (agent.enabled == false)
             return;
 
-        if(_shouldUpdateDetination)
+        if (_shouldUpdateDetination)
+        {
             agent.SetDestination(target.position);
+            PlaySwimmingSound(); // Start swimming sound if not already playing
+        }
     }
 
     private void BeginAttackOnPlayer()
     {
         SetNavAgentState(true);
         agent.speed = _attackSpeed;
+        PlaySwimmingSound();
     }
 
     private void SetNavAgentState(bool isActive)
     {
         agent.enabled = isActive;
         _shouldUpdateDetination = isActive;
+
+        if (!isActive) // Stop swimming sound if agent is not active
+        {
+            StopSwimmingSound();
+        }
+    }
+    private void PlaySwimmingSound()
+    {
+        if (swimSound != null && audioSource != null && !isSwimmingSoundPlaying)
+        {
+            audioSource.clip = swimSound;
+            audioSource.Play();
+            isSwimmingSoundPlaying = true;
+        }
+    }
+    private void StopSwimmingSound()
+    {
+        if (audioSource != null && isSwimmingSoundPlaying)
+        {
+            audioSource.Stop();
+            isSwimmingSoundPlaying = false;
+        }
     }
 
     private async void OnHitPlayer()
     {
         _shouldUpdateDetination = false;
         agent.enabled = false;
+        StopSwimmingSound(); // Stop swimming sound before attack
+        PlayAttackSound();
         await AttackAnimation();
 
         Vector2 newPos = new(transform.position.x, _initPosY);
@@ -76,6 +120,14 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(newPos);
 
         HasReturnedToOriginalPosition();
+    }
+
+    private void PlayAttackSound()
+    {
+        if (attackSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(attackSound);
+        }
     }
 
     private async void HasReturnedToOriginalPosition()

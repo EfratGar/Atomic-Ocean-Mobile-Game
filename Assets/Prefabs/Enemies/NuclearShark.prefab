@@ -180,6 +180,8 @@ MonoBehaviour:
   attackDuration: 0.4
   attackMagnitude: 0.75
   postAttackSpeed: 15
+  attackSound: {fileID: 8300000, guid: d9db68fdc9489c84686e0b4af0d33845, type: 3}
+  swimSound: {fileID: 8300000, guid: f05a5498541e2e94fa5a225fb60042a5, type: 3}
 --- !u!114 &8822486143349164281
 MonoBehaviour:
   m_ObjectHideFlags: 0
