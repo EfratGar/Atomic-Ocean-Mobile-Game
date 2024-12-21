@@ -13,6 +13,7 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] private int maxMonsterHp = 8;
     private int _monsterAttackPower;
     [SerializeField] GameObject coin;
+
     private Vector3 monsterLastPos;
 
 
@@ -69,21 +70,22 @@ public class Monster : MonoBehaviour, IDamageable
         return UnityEngine.Random.Range(3, _monsterAttackPower);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(2);
-        }
-        else if (collision.gameObject.CompareTag("Player"))
-        {
-            OnHitPlayer();
         }
     }
 
     protected void InvokeOnAttackPlayerEvent()
     {
         OnAttackPlayer();
+    }
+
+    protected void InvokeOnHitPlayerEvent(int damageToPlayer)
+    {
+        OnHitPlayer(damageToPlayer);
     }
 
 

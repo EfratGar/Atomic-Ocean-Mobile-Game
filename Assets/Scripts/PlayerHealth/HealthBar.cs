@@ -14,8 +14,8 @@ public class HealthBar : MonoBehaviour
     public void SetCharacter(PlayableCharacter newCharacter)
     {
         currentCharacter = newCharacter;
-        healthSlider.maxValue = currentCharacter.maxHp;
-        healthSlider.value = currentCharacter.currentHp;
+        healthSlider.maxValue = currentCharacter.PlayerHP;
+        healthSlider.value = currentCharacter.CurrentPlayerHP;
         UpdateHealthBarColor();
     }
 
@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour
     {
         if (currentCharacter != null)
         {
-            healthSlider.value = currentCharacter.currentHp;
+            healthSlider.value = currentCharacter.CurrentPlayerHP;
             UpdateHealthBarColor();
         }
     }

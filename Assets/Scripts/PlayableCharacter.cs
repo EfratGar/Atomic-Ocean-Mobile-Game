@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 
 public class PlayableCharacter : MonoBehaviour, IDamageable
 {
-    private int playerHp = 100;
     [SerializeField] TMP_Text DamageText;
     [SerializeField] private float hitCooldown;
+
+
+    [field: SerializeField] public int PlayerHP { get; private set; } = 100;
+    public int CurrentPlayerHP { get; private set; }
+
 
     private void Start()
     {
         if(DamageText != null)
             DamageText.gameObject.SetActive(false);
         Monster.OnHitPlayer += OnGotHit;
+        CurrentPlayerHP = PlayerHP;
     }
 
     public void TakeDamage(int damageTaken)
     {
-        if (playerHp > 0)
+        if (CurrentPlayerHP > 0)
         {
-            playerHp -= damageTaken;
-            Debug.Log("Player was hit, current HP is " + playerHp);
+            CurrentPlayerHP -= damageTaken;
+            Debug.Log("Player was hit, current HP is " + CurrentPlayerHP);
 
         }
-        if (playerHp <= 0)
-        {
+        if (CurrentPlayerHP <= 0) 
             Die();
-        }
     }
 
     public void Die()
@@ -45,9 +46,9 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             TakeDamage(10);
         }
     }
-    private void OnGotHit()
+    private void OnGotHit(int damageTaken)
     {
-        TakeDamage(25);
+        TakeDamage(damageTaken);
         DisplayDamage();
     }
 

@@ -52,7 +52,7 @@ public class EnemyAI : MonoBehaviour
 
         Monster monster = GetComponent<Monster>();
         monster.OnAttackPlayer += BeginAttackOnPlayer;
-        Monster.OnHitPlayer += OnHitPlayer;
+        Monster.OnHitPlayer += (_) => OnHitPlayer();
         monster.OnReady += () => enabled = true;
 
         target = FindObjectOfType<PlayableCharacter>().transform;

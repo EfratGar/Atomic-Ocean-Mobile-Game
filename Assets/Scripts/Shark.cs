@@ -11,6 +11,7 @@ public class Shark : Monster
     public event Action OnNavAgentBasedMovementEnded = delegate { };
     private CancellationTokenSource cancellationTokenSource;
     [SerializeField] private GameObject present;
+    [SerializeField] private int damagePlayerTakes;
 
     protected override void Start()
     {
@@ -38,6 +39,13 @@ public class Shark : Monster
         if (cancellationTokenSource.Token.IsCancellationRequested)
             return;
         InvokeOnAttackPlayerEvent();
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (collision.gameObject.CompareTag("Player"))
+            InvokeOnHitPlayerEvent(damagePlayerTakes);
     }
 
     private void OnAttackEnded()

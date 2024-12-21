@@ -6,15 +6,14 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private int _numberOfMonsters;
-    private int _levelIndex;
+    [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
     [SerializeField] private float delayBetweenLevels;
 
     private void Start()
     {
-        _levelIndex = 1;
         Monster.OnMonsterDied += OnMonsterDied;
-        LoadLevel(_levelIndex); // Loads the first level
+        LoadLevel(levelIndex); // Loads the first level
     }
 
 
@@ -39,7 +38,7 @@ public class LevelManager : MonoBehaviour
         if (_numberOfMonsters <= 0)
         {
             AsyncOperation unloadLevelOperation = 
-                SceneManager.UnloadSceneAsync(GetLevelSceneName(_levelIndex));
+                SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
             unloadLevelOperation.completed += LevelUnloaded;
         }
     }
@@ -47,8 +46,8 @@ public class LevelManager : MonoBehaviour
     private async void LevelUnloaded(AsyncOperation unloadLevelOperation)
     {
         await Task.Delay(TimeSpan.FromSeconds(delayBetweenLevels)); 
-        _levelIndex++;
-        LoadLevel(_levelIndex);
+        levelIndex++;
+        LoadLevel(levelIndex);
     }
 
     private string GetLevelSceneName(int levelIndex)
