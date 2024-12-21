@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
 public class Present : MonoBehaviour
 {
-    [SerializeField] private GameObject bullet;
-    private bool hasTriggered;
+    [SerializeField] private GameObject bulletPrefab;
+
+    public static event Action OnCollected = delegate { };
 
     Rigidbody2D rb;
 
@@ -15,10 +17,9 @@ public class Present : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !hasTriggered)
+        if (collision.CompareTag("Player"))
         {
-            hasTriggered = true;
-            Instantiate(bullet);
+            OnCollected();
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Ground"))
@@ -27,5 +28,4 @@ public class Present : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Static;
         }
     }
-
 }

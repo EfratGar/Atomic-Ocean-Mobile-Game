@@ -14,61 +14,38 @@ public class Character_Movement : MonoBehaviour
     [SerializeField] private float tiltSmoothness = 3.0f;
     [SerializeField] private float floatStrength = 0.5f;
 
-    [Header("Shooting")]
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireRate = 0.5f;
-    private bool _canShoot;
+
+
 
     private Camera mainCamera;
 
     private float baseY;
     private Vector3 _prevPos;
+    private InputHandler _inputHandler;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         baseY = transform.position.y; 
-        _canShoot = true;
+
         mainCamera = Camera.main;
         _prevPos = transform.position;
+        _inputHandler = GetComponent<InputHandler>();
     }
 
     void Update()
     {
-        bool isPressing = HandleInput();
-        if(isPressing && _canShoot)
+        bool isPressing = _inputHandler.IsPressing();
+
+        if (isPressing)
         {
-            Shoot();
-            _canShoot = false;
-            ShootCooldown();
+            Vector3 targetPos = _inputHandler.GetInputPosition();
+            MovePlayer(targetPos);
         }
         ApplyTilt();
         ApplyFloatingEffect();
         ClampPosition();
         _prevPos = transform.position;
-    }
-
-    private bool HandleInput()
-    {
-        bool isPressing = false;
-#if UNITY_EDITOR
-        // Mouse Input
-        if (Input.GetMouseButton(0))
-        {
-            MovePlayer(Input.mousePosition);
-            isPressing = true;
-        }
-#else
-        // Mobile Input
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            MovePlayer(touch.position);
-            isPressing = true;
-        }
-#endif
-        return isPressing;
     }
 
     private void MovePlayer(Vector3 screenSpacePlayerDestination)
@@ -114,14 +91,5 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
-    private void Shoot()
-    {
-        Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-    }
 
-    private async void ShootCooldown()
-    {
-        await Task.Delay(TimeSpan.FromSeconds(fireRate));
-        _canShoot = true;
-    }
 }

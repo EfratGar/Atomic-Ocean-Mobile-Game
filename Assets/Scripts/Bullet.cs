@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 10f;
     private Rigidbody2D rb;
+    public event Action OnDoubleBullet = delegate { };
 
     void Awake()
     {
@@ -20,10 +22,15 @@ public class Bullet : MonoBehaviour
         {
             OnBecameInvisible();
         }
+        else if(collision.gameObject.CompareTag("Present"))
+        {
+            OnDoubleBullet();
+        }
     }
 
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
+
 }

@@ -6682,42 +6682,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1975743305685160673, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: tiltAngle
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2402787665352309317, guid: db59b3404562dd6438436a40c50cce58, type: 3}
       propertyPath: m_Name
       value: Submarine_Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 2514015025560349025, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2514015025560349025, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 3093591541890795003, guid: db59b3404562dd6438436a40c50cce58, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 714471212}
-    - target: {fileID: 3093591541890795003, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: m_InstanceId
-      value: -104438
-      objectReference: {fileID: 0}
-    - target: {fileID: 3093591541890795003, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: m_SelfShadows
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4888703425667343521, guid: db59b3404562dd6438436a40c50cce58, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1924351676}
-    - target: {fileID: 4888703425667343521, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: m_InstanceId
-      value: -104456
-      objectReference: {fileID: 0}
     - target: {fileID: 5328880443450924972, guid: db59b3404562dd6438436a40c50cce58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6762,18 +6738,6 @@ PrefabInstance:
       propertyPath: DamageText
       value: 
       objectReference: {fileID: 453419239}
-    - target: {fileID: 7639191199851391344, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: hitCooldown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639191199851391344, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: <Test>k__BackingField
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7639191199851391344, guid: db59b3404562dd6438436a40c50cce58, type: 3}
-      propertyPath: <MaxPlayerHP>k__BackingField
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
