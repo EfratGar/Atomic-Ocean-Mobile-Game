@@ -35,6 +35,7 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     {
         // Here will be level end popup + menu + animation
         Debug.Log("You died.");
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -11,6 +11,8 @@ public class Monster : MonoBehaviour, IDamageable
     private int _currentMonsterHp;
     [SerializeField] private int maxMonsterHp = 8;
     private int _monsterAttackPower;
+    [SerializeField] GameObject coin;
+    private Vector3 monsterLastPos;
 
 
     public event Action OnAttackPlayer = delegate { };
@@ -50,7 +52,10 @@ public class Monster : MonoBehaviour, IDamageable
     public virtual void Die()
     {
         //Here will be dead monster animation
+        monsterLastPos = transform.position;
         Destroy(gameObject);
+        Instantiate(coin, monsterLastPos, Quaternion.identity);
+
     }
 
     private void OnDestroy()

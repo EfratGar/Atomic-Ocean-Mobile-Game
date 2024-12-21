@@ -5064,6 +5064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMonsterHp: 35
+  coin: {fileID: 6199118014606944154, guid: 2c31a7b397ef223438e8c0f6700d068c, type: 3}
   swaySpeed: 3
   swayAmount: 5
   forwardSpeed: 2

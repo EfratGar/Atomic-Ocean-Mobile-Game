@@ -39,6 +39,4 @@ public class PuffFishShooter : MonoBehaviour
         _canShoot = true;
     }
 
-
-
 }

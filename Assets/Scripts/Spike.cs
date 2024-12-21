@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Spike : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 10f;
     private Rigidbody2D rb;
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Monster"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             OnBecameInvisible();
         }
@@ -26,4 +26,5 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }

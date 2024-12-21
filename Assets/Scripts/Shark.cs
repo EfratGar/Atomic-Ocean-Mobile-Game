@@ -10,6 +10,7 @@ public class Shark : Monster
     [SerializeField] private float attackRate;
     public event Action OnNavAgentBasedMovementEnded = delegate { };
     private CancellationTokenSource cancellationTokenSource;
+    [SerializeField] private GameObject present;
 
     protected override void Start()
     {
