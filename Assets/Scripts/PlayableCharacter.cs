@@ -45,7 +45,6 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             TakeDamage(10);
         }
     }
-
     private void OnGotHit()
     {
         TakeDamage(25);

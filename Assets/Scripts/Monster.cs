@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour, IDamageable
 {
+    public delegate void DamageAction(int howMuchDamage);
 
     private int _currentMonsterHp;
     [SerializeField] private int maxMonsterHp = 8;
@@ -16,7 +17,7 @@ public class Monster : MonoBehaviour, IDamageable
 
 
     public event Action OnAttackPlayer = delegate { };
-    public static event Action OnHitPlayer = delegate { };
+    public static event DamageAction OnHitPlayer = delegate { };
     public event Action OnReady = delegate { };
     public static event Action OnMonsterDied = delegate { };
 
