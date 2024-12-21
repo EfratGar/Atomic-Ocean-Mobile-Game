@@ -85,15 +85,6 @@ public class JellyFish : Monster
 
     private void ApplySwimAnimation()
     {
-        /*transform.rotation = Quaternion.identity;
-
-        Vector3 screenCenter = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.7f, Camera.main.transform.position.z * -1));
-        screenCenter.z = transform.position.z;
-
-        float swayY = Mathf.Sin(Time.time * swaySpeed) * 0.5f;
-        Vector3 targetPosition = screenCenter + new Vector3(0, swayY, 0);
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, forwardSpeed * Time.deltaTime);*/
         float swimY = Mathf.Sin(Time.time * swaySpeed * 0.5f) * 0.5f;
         Vector3 destination = new(transform.position.x, startPosition.y + swimY, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime);
