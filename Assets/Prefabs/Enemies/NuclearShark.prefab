@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 2653910613959502874}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.28, y: -1.27, z: 0.06367268}
+  m_LocalPosition: {x: -3.26, y: -1.29, z: 0.06367268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,13 +259,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5311134315782044757}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.13364027, w: 0.99103}
-  m_LocalPosition: {x: -0.96, y: -0.42, z: 0.06367268}
+  m_LocalRotation: {x: -0, y: -0, z: 0.21353875, w: 0.9769346}
+  m_LocalPosition: {x: -1.07, y: 0.2, z: 0.06367268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5330307877082746970}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15.36}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.66}
 --- !u!212 &6809066418987997083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ MonoBehaviour:
   attackRate: 6
   present: {fileID: 0}
   damagePlayerTakes: 20
-  explosionPrefab: {fileID: 0}
+  sharkExplosionPrefab: {fileID: 5063978680799686511, guid: e1d08654cd99aa041a413fbd0981849d, type: 3}
 --- !u!114 &6158263599597820252
 MonoBehaviour:
   m_ObjectHideFlags: 0

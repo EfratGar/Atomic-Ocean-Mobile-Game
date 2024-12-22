@@ -55,17 +55,10 @@ public class SharkMovement : MonoBehaviour
     {
         if (rightTail != null)
         {
-
-            float tailSwayRotation = Mathf.Sin(Time.time * (tailSwaySpeed * 0.5f)) * tailSwayAmount; 
-            rightTail.localRotation = Quaternion.Euler(0, 0, tailSwayRotation);
-
-            float tailSwayPosition = Mathf.Sin(Time.time * (tailSwaySpeed * 0.5f)) * 0.3f; 
-            Vector3 originalPosition = rightTail.localPosition;
-            rightTail.localPosition = new Vector3(originalPosition.x + tailSwayPosition, originalPosition.y, originalPosition.z);
+            float tailSway = Mathf.Sin(Time.time * tailSwaySpeed) * tailSwayAmount;
+            rightTail.localRotation = Quaternion.Euler(0, 0, tailSway);
         }
     }
-
-
 
     private void AnimateFins()
     {

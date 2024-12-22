@@ -12,7 +12,7 @@ public class Shark : Monster
     private CancellationTokenSource cancellationTokenSource;
     [SerializeField] private GameObject present;
     [SerializeField] private int damagePlayerTakes;
-    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private GameObject sharkExplosionPrefab;
 
 
     protected override void Start()
@@ -32,11 +32,11 @@ public class Shark : Monster
     public override void Die()
     {
 
-        if (explosionPrefab != null)
+        if (sharkExplosionPrefab != null)
         {
             Vector3 sharkPosition = transform.position;
 
-            GameObject explosion = Instantiate(explosionPrefab, sharkPosition, Quaternion.identity);
+            GameObject explosion = Instantiate(sharkExplosionPrefab, sharkPosition, Quaternion.identity);
 
             Destroy(explosion, 2.0f); 
         }

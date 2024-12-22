@@ -130,6 +130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206082088697373948, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
+      propertyPath: tailSwaySpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206082088697373948, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
+      propertyPath: tailSwayAmount
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6823812553583319260, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_Name
       value: NuclearShark (1)
@@ -140,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7229264195159691604, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6
+      value: -18.81
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -148,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.18
+      value: 6.42
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.z
