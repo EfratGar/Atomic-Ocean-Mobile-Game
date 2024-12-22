@@ -21,6 +21,7 @@ public class Monster : MonoBehaviour, IDamageable
     public static event DamageAction OnHitPlayer = delegate { };
     public event Action OnReady = delegate { };
     public static event Action OnMonsterDied = delegate { };
+    [SerializeField] private GameObject explosionPrefab;
 
 
 
@@ -54,6 +55,12 @@ public class Monster : MonoBehaviour, IDamageable
     public virtual void Die()
     {
         //Here will be dead monster animation
+        // Instantiate the explosion effect at the position of the PuffFish
+        Vector3 basePosition = transform.position;
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, basePosition, Quaternion.identity);
+        }
         monsterLastPos = transform.position;
         Destroy(gameObject);
         Instantiate(coin, monsterLastPos, Quaternion.identity);

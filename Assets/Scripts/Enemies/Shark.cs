@@ -12,6 +12,8 @@ public class Shark : Monster
     private CancellationTokenSource cancellationTokenSource;
     [SerializeField] private GameObject present;
     [SerializeField] private int damagePlayerTakes;
+    [SerializeField] private GameObject explosionPrefab;
+
 
     protected override void Start()
     {
@@ -29,9 +31,21 @@ public class Shark : Monster
 
     public override void Die()
     {
+
+        if (explosionPrefab != null)
+        {
+            Vector3 sharkPosition = transform.position;
+
+            GameObject explosion = Instantiate(explosionPrefab, sharkPosition, Quaternion.identity);
+
+            Destroy(explosion, 2.0f); 
+        }
+
         base.Die();
+
         cancellationTokenSource.Cancel();
     }
+
 
     private async void AttackPlayer()
     {
