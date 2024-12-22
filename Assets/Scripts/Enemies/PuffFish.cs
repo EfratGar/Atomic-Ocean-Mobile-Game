@@ -6,7 +6,7 @@ public class PuffFish : Monster
 {
     [SerializeField] private float horizontalOffset;
     [SerializeField] private Monster smallPuffFishPrefab;
-    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private GameObject explosionPrefabs;
 
     public override void Die()
     {
@@ -16,9 +16,9 @@ public class PuffFish : Monster
         Debug.Log($"PuffFish died at position: {basePosition}");
 
         // Instantiate the explosion effect at the position of the PuffFish
-        if (explosionPrefab != null)
+        if (explosionPrefabs != null)
         {
-            GameObject explosion = Instantiate(explosionPrefab, basePosition, Quaternion.identity);
+            GameObject explosion = Instantiate(explosionPrefabs, basePosition, Quaternion.identity);
 
             // Optional: Destroy explosion after its effect is done
             Destroy(explosion, 2.0f); // Adjust time to match the particle system duration

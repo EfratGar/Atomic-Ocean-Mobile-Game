@@ -134,13 +134,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NuclearShark (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7229264195159691604, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229264195159691604, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.81
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.25
+      value: 3.18
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.z
