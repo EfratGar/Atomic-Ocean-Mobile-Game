@@ -17,6 +17,13 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         if(DamageText != null)
             DamageText.gameObject.SetActive(false);
         Monster.OnHitPlayer += OnGotHit;
+
+        HealthBar healthBar = FindObjectOfType<HealthBar>();
+        if (healthBar != null)
+        {
+            healthBar.SetCharacter(this);
+        }
+
         CurrentPlayerHP = PlayerHP;
     }
 
