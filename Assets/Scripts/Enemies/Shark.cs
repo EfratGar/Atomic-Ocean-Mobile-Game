@@ -76,11 +76,17 @@ public class Shark : Monster
         }
 
         Vector2 explosionDirection = UnityEngine.Random.insideUnitCircle.normalized;
-        explosionDirection.y = Mathf.Abs(explosionDirection.y);
-        rb.AddForce(explosionDirection * (partExplosionForce * 0.5f), ForceMode2D.Impulse);
 
-        Destroy(part.gameObject, 10f);
+        rb.AddForce(explosionDirection * partExplosionForce, ForceMode2D.Impulse);
+
+        float randomTorque = UnityEngine.Random.Range(-10f, 10f);
+        rb.AddTorque(randomTorque, ForceMode2D.Impulse);
+
+        rb.gravityScale = 0f;
+
+        Destroy(part.gameObject, 4f);
     }
+
 
     private async void AttackPlayer()
     {

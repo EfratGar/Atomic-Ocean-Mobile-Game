@@ -47,9 +47,41 @@ PrefabInstance:
       propertyPath: transitionToStartPositionDuration
       value: 0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 1531233424678393673, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531233424678393673, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.060588475
+      objectReference: {fileID: 0}
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_Name
       value: SmallPuffFish Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846422480541984334, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846422480541984334, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846422480541984334, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208257422252794167, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208257422252794167, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208257422252794167, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4967073443088462592, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: maxFireRate
@@ -110,6 +142,14 @@ PrefabInstance:
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808551281415927474, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808551281415927474, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.060588475
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3354951530446194337, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}

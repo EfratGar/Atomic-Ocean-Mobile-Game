@@ -56,9 +56,16 @@ public class SharkMovement : MonoBehaviour
         if (rightTail != null)
         {
             float tailSway = Mathf.Sin(Time.time * tailSwaySpeed) * tailSwayAmount;
-            rightTail.localRotation = Quaternion.Euler(0, 0, tailSway);
+            float swayY = Mathf.Sin(Time.time * tailSwaySpeed * 0.5f) * 5.0f; 
+            rightTail.localRotation = Quaternion.Euler(swayY, 0, tailSway);
+            Debug.Log($"Tail Rotation: {rightTail.localRotation.eulerAngles}");
+        }
+        else
+        {
+            Debug.LogError("RightTail is not assigned in the Inspector!");
         }
     }
+
 
     private void AnimateFins()
     {

@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         CalculateNumberOfMonstersInLevel();
         if (_numberOfMonsters <= 0)
         {
-            await Task.Delay(1000);
+            await Task.Delay(2000);
             AsyncOperation unloadLevelOperation =
                 SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
             unloadLevelOperation.completed += LevelUnloaded;

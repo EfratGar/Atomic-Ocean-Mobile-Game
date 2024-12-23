@@ -192,11 +192,11 @@ Transform:
   m_GameObject: {fileID: 5311134315782044757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.17, y: 1.85, z: 0}
+  m_LocalPosition: {x: 1.17, y: 1.8499994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4721789162782950142}
+  m_Father: {fileID: 7627353279971981615}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6809066418987997083
 SpriteRenderer:
@@ -446,7 +446,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4097692052976846748}
   - {fileID: 1030704742667569470}
   - {fileID: 2437843495316310271}
   - {fileID: 2350322104393946141}
@@ -544,6 +543,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4097692052976846748}
   - {fileID: 4721789162782950142}
   - {fileID: 7229264195159691604}
   m_Father: {fileID: 0}
@@ -612,16 +612,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8f4a1da7a02eb449feb3bf41cc1a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swaySpeed: 6
-  swayAmount: 14
-  forwardSpeed: 10
+  swaySpeed: 8
+  swayAmount: 10
+  forwardSpeed: 12
   rightTail: {fileID: 4097692052976846748}
-  tailSwaySpeed: 40
-  tailSwayAmount: 50
+  tailSwaySpeed: 25
+  tailSwayAmount: 25
   leftFin: {fileID: 1030704742667569470}
   rightFin: {fileID: 2437843495316310271}
-  finSwaySpeed: 5
-  finSwayAmount: 7
+  finSwaySpeed: 4
+  finSwayAmount: 6
 --- !u!70 &3455516401119765529
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b286e28da4d0c4abb66d5180b44e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMonsterHp: 30
+  maxMonsterHp: 35
   coin: {fileID: 6199118014606944154, guid: 2c31a7b397ef223438e8c0f6700d068c, type: 3}
   explosionPrefab: {fileID: 5063978680799686511, guid: e1d08654cd99aa041a413fbd0981849d, type: 3}
   attackRate: 2
@@ -721,7 +721,7 @@ MonoBehaviour:
   leftFin: {fileID: 1030704742667569470}
   rightFin: {fileID: 2437843495316310271}
   tail: {fileID: 4097692052976846748}
-  partExplosionForce: 1
+  partExplosionForce: 8.5
 --- !u!114 &6158263599597820252
 MonoBehaviour:
   m_ObjectHideFlags: 0
