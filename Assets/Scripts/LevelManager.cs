@@ -30,14 +30,14 @@ public class LevelManager : MonoBehaviour
         loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
     }
 
-
-    private void OnMonsterDied()
+    private async void OnMonsterDied()
     {
         _numberOfMonsters--;
         CalculateNumberOfMonstersInLevel();
         if (_numberOfMonsters <= 0)
         {
-            AsyncOperation unloadLevelOperation = 
+            await Task.Delay(1000);
+            AsyncOperation unloadLevelOperation =
                 SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
             unloadLevelOperation.completed += LevelUnloaded;
         }
