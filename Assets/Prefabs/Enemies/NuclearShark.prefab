@@ -616,8 +616,8 @@ MonoBehaviour:
   swayAmount: 10
   forwardSpeed: 12
   rightTail: {fileID: 4097692052976846748}
-  tailSwaySpeed: 25
-  tailSwayAmount: 25
+  tailSwaySpeed: 100
+  tailSwayAmount: 100
   leftFin: {fileID: 1030704742667569470}
   rightFin: {fileID: 2437843495316310271}
   finSwaySpeed: 4

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class JellyFish : Monster
@@ -6,17 +7,23 @@ public class JellyFish : Monster
     [SerializeField] private float swaySpeed = 2.0f;
     [SerializeField] private float swayAmount = 10.0f;
     [SerializeField] private float forwardSpeed = 2.0f;
-    [SerializeField] private ParticleSystem jellyFishShoot; // Particle System for electric attack
-    private Vector3 startPosition;
 
-    [Header("Sound settings")]
+    [Header("Tentacle Animation Settings")]
+    [SerializeField] private Transform[] leftTentacles; 
+    [SerializeField] private Transform[] rightTentacles; 
+    [SerializeField] private float tentacleSwaySpeed = 3.0f; 
+    [SerializeField] private float tentacleSwayAmount = 15.0f; 
+
+    [Header("Electric Attack")]
+    [SerializeField] private ParticleSystem jellyFishShoot; // Particle System for electric attack
     [SerializeField] private AudioClip electricSound; // Electric sound for jellyfish's electric attack
     private AudioSource audioSource;
-    private bool isSoundPlaying = false;
 
     [Header("Sound Timing")]
     [SerializeField] private float soundInterval = 2.0f; // Interval between each sound
     private float soundTimer;
+
+    private Vector3 startPosition;
 
     protected override void Start()
     {
@@ -27,22 +34,25 @@ public class JellyFish : Monster
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.loop = false; // Ensure the sound does not loop
+            audioSource.loop = false;
         }
         audioSource.clip = electricSound;
 
-        // Start particle system
+        // Initialize Particle System
         if (jellyFishShoot != null && !jellyFishShoot.isPlaying)
         {
             jellyFishShoot.Play();
         }
 
-        soundTimer = soundInterval; // Initialize timer
+        soundTimer = soundInterval;
+
+        StartCoroutine(ElectricAttackRoutine());
     }
 
     private void Update()
     {
         ApplySwimAnimation();
+        AnimateTentacles();
     }
 
     protected override void OnEnteredScene()
@@ -50,37 +60,6 @@ public class JellyFish : Monster
         base.OnEnteredScene();
         startPosition = transform.position;
         jellyFishShoot.Play();
-        CheckAndPlayElectricSound();
-    }
-
-    private void CheckAndPlayElectricSound()
-    {
-        if (jellyFishShoot != null && jellyFishShoot.isPlaying)
-        {
-            // Timer to control intervals between sounds
-            soundTimer -= Time.deltaTime;
-
-            if (soundTimer <= 0f)
-            {
-                PlayElectricSound();
-                soundTimer = soundInterval; // Reset the timer
-            }
-        }
-        else
-        {
-            // Stop sound if particle system stops
-            audioSource.Stop();
-            isSoundPlaying = false;
-        }
-    }
-
-    private void PlayElectricSound()
-    {
-        if (electricSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(electricSound);
-            isSoundPlaying = true;
-        }
     }
 
     private void ApplySwimAnimation()
@@ -94,17 +73,58 @@ public class JellyFish : Monster
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime);
     }
 
+    private void AnimateTentacles()
+    {
+        float sway = Mathf.Sin(Time.time * tentacleSwaySpeed) * tentacleSwayAmount;
+
+        foreach (var tentacle in leftTentacles)
+        {
+            if (tentacle != null)
+            {
+                tentacle.localRotation = Quaternion.Euler(0, 0, sway);
+            }
+        }
+
+        foreach (var tentacle in rightTentacles)
+        {
+            if (tentacle != null)
+            {
+                tentacle.localRotation = Quaternion.Euler(0, 0, -sway);
+            }
+        }
+    }
+
+    private IEnumerator ElectricAttackRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(soundInterval);
+
+            if (jellyFishShoot != null)
+            {
+                jellyFishShoot.Play();
+
+                if (electricSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(electricSound);
+                }
+            }
+        }
+    }
+
     public override void Die()
     {
         base.Die();
 
         // Stop particle system and sound
         if (jellyFishShoot != null)
+        {
             jellyFishShoot.Stop();
+        }
 
         if (audioSource != null)
+        {
             audioSource.Stop();
-
-        isSoundPlaying = false;
+        }
     }
 }

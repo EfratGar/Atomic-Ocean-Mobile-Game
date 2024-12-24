@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &2096392
+--- !u!43 &652928134
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,7 +287,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1101391950
+--- !u!43 &1520101235
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,6 +460,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 345476115972638188, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225413427167707622, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813652028134135543, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023592419449479609, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343211152163542161, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.38
@@ -500,18 +516,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3972508071037948876, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5337670555947959718, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.76
+      value: 9.71
       objectReference: {fileID: 0}
     - target: {fileID: 5337670555947959718, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.65
+      value: -7.55
       objectReference: {fileID: 0}
     - target: {fileID: 7410906129924972930, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 2096392}
+      objectReference: {fileID: 652928134}
+    - target: {fileID: 7410906129924972930, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_InstanceId
+      value: -33886
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451992548120131440, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9164752004138407864, guid: 056a8d93428369a4f9de9d5421c8ca42, type: 3}
       propertyPath: m_Name
       value: BigBoss
