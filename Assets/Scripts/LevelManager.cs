@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     private const string BaseLevelSceneName = "Level";
     [SerializeField] private float delayBetweenLevels;
 
+    public event Action LevelCompleted = delegate { };
+
     private void Start()
     {
         Monster.OnMonsterDied += OnMonsterDied;
@@ -37,6 +39,7 @@ public class LevelManager : MonoBehaviour
         CalculateNumberOfMonstersInLevel();
         if (_numberOfMonsters <= 0)
         {
+            LevelCompleted();
             AsyncOperation unloadLevelOperation = 
                 SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
             unloadLevelOperation.completed += LevelUnloaded;
