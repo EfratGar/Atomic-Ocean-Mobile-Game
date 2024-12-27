@@ -2,19 +2,28 @@ using UnityEngine;
 
 public class CrabMovement : MonoBehaviour
 {    
-    [SerializeField] private float moveRange = 2.0f;     
+    [SerializeField] private float moveRange = 3.0f;     
     [SerializeField] private float moveFrequency = 2.0f;
+    private float _moveSpeed;
 
     private bool _shouldEscape;
 
     private Vector3 startPosition;
+    private float _creationTime;
+    private float _timer;
 
     private void Awake()
     {
         EnterLevel enterLevel = GetComponent<EnterLevel>();
         enterLevel.OnEnteredScene += StartMoving;
+
         LevelManager levelManager = FindFirstObjectByType<LevelManager>();
         levelManager.LevelCompleted += () => _shouldEscape = true;
+        levelManager.MoveToActiveScene(gameObject);
+
+        startPosition = transform.position;
+        _creationTime = Time.time;
+
         enabled = false;
     }
 
@@ -25,12 +34,14 @@ public class CrabMovement : MonoBehaviour
 
     private void MoveSideToSide()
     {
-        float offsetX = moveRange;
         if (!_shouldEscape)
-            offsetX *= Mathf.Sin(Time.time * moveFrequency);
-
-        Vector3 targetPos = startPosition + new Vector3(offsetX, 0, 0);
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime);
+        {
+            float offsetX = Mathf.Sin(_timer * moveFrequency * Mathf.Deg2Rad) * moveRange;
+            Vector3 targetPos = startPosition + new Vector3(offsetX, 0, 0);
+            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * _moveSpeed);
+            _timer += Time.deltaTime;
+        }
+        else Escape();
     }
 
     private void OnBecameInvisible()
@@ -40,8 +51,14 @@ public class CrabMovement : MonoBehaviour
 
     private void StartMoving()
     {
+        _moveSpeed = (transform.position - startPosition).magnitude / (Time.time - _creationTime);
         startPosition = transform.position;
         enabled = true;
+    }
+
+    private void Escape()
+    {
+        transform.Translate(_moveSpeed * Time.deltaTime * Vector3.right);
     }
 
 }

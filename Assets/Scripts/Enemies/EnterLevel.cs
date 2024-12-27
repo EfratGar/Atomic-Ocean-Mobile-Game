@@ -38,5 +38,6 @@ public class EnterLevel : MonoBehaviour
             percentage = time / duration;
             await Task.Delay(TimeSpan.FromSeconds(deltaTime));
         }
+        transform.position = destination;
     }
 }

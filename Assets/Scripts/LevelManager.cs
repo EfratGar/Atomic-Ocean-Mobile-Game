@@ -69,5 +69,10 @@ public class LevelManager : MonoBehaviour
         int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
         return loadedSceneBuildIndex > 0;
     }
+
+    public void MoveToActiveScene(GameObject objectToMove)
+    {
+        SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetActiveScene());
+    }
 }
 
