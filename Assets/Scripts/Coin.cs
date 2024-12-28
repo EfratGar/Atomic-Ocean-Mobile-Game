@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -8,6 +9,7 @@ public class Coin : MonoBehaviour
 
     private CoinManager coinManager;
     private Tweener _coinFallTween;
+    private SpriteRenderer coinRenderer;
 
     Rigidbody2D rb;
 
@@ -15,6 +17,7 @@ public class Coin : MonoBehaviour
     {
         coinManager = CoinManager.instance;
         rb = GetComponent<Rigidbody2D>();
+        coinRenderer = GetComponent<SpriteRenderer>();
         CoinFall();
 
     }
@@ -38,6 +41,7 @@ public class Coin : MonoBehaviour
 
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Static;
+            FadeCoin();
         }
     }
 
@@ -47,7 +51,13 @@ public class Coin : MonoBehaviour
         .SetLoops(-1, LoopType.Restart)
         .SetRelative()
         .SetEase(Ease.Linear);
+    }
 
+    private async void FadeCoin()
+    {
+        await Task.Delay(3000);
+        await coinRenderer.DOFade(0f, 1f).AsyncWaitForCompletion();
+        Destroy(gameObject);
     }
 
 }
