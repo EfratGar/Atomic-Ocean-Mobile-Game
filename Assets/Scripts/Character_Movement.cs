@@ -8,8 +8,6 @@ public class Character_Movement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float thrustForce = 15.0f;
-    [SerializeField] private float maxSpeed = 15.0f;
-    [SerializeField] private float quickTurnMultiplier = 2.0f;
     [SerializeField] private float tiltAngle = 15.0f;
     [SerializeField] private float tiltSmoothness = 3.0f;
     [SerializeField] private float floatStrength = 0.5f;

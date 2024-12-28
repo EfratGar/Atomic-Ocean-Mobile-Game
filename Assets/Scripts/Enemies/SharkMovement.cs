@@ -5,7 +5,6 @@ public class SharkMovement : MonoBehaviour
 {
     [SerializeField] private float swaySpeed = 2.0f;
     [SerializeField] private float swayAmount = 10.0f;
-    [SerializeField] private float forwardSpeed = 2.0f;
 
     [SerializeField] private Transform rightTail;
     [SerializeField] private float tailSwaySpeed = 2.0f;
