@@ -5230,7 +5230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ccb62d503d6ed3449f5845af96b7984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMonsterHp: 150
+  maxMonsterHp: 120
   coin: {fileID: 6199118014606944154, guid: 2c31a7b397ef223438e8c0f6700d068c, type: 3}
   swaySpeed: 3
   swayAmount: 5
@@ -5313,7 +5313,7 @@ MonoBehaviour:
   - {x: 5.12, y: -5.12, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -136622
+  m_InstanceId: 69854
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5.12, y: 5.12, z: 0}
