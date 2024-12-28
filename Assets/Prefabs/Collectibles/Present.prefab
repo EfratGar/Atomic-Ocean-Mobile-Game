@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf1fa989bf18194fb29d54a3e49f1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 2811963133716212240, guid: ef928ba30b0aba447a222cb7b31741a4, type: 3}
 --- !u!50 &-583423910783657987
 Rigidbody2D:
   serializedVersion: 4

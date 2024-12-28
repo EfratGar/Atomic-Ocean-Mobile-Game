@@ -1,11 +1,19 @@
 using System.Threading.Tasks;
 using UnityEngine;
-using TMPro;
+using System.Collections;
+using DG.Tweening;
 
 public class PlayableCharacter : MonoBehaviour, IDamageable
 {
-    [SerializeField] TMP_Text DamageText;
     [SerializeField] private float hitCooldown;
+
+    [Header("Death Flicker")]
+    [SerializeField] private float flickerSpeed = 0.06f;
+
+    private Material material;
+    private Color originalColor;
+
+    private Transform playerTransform;
 
 
     [field: SerializeField] public int PlayerHP { get; private set; } = 100;
@@ -14,10 +22,11 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        if(DamageText != null)
-            DamageText.gameObject.SetActive(false);
+        material = GetComponent<SpriteRenderer>().material;
+        originalColor = material.color;
         Monster.OnHitPlayer += OnGotHit;
         CurrentPlayerHP = PlayerHP;
+        playerTransform = transform;
     }
 
     public void TakeDamage(int damageTaken)
@@ -34,8 +43,7 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        // Here will be level end popup + menu + animation
-        Debug.Log("You died.");
+        // Here will be level end popup + animation
         Destroy(gameObject);
     }
 
@@ -43,20 +51,35 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     {
         if (collision.gameObject.CompareTag("Spike"))
         {
-            TakeDamage(10);
+            OnGotHit(10);
         }
     }
-    private void OnGotHit(int damageTaken)
+    public void OnGotHit(int damageTaken)
     {
         TakeDamage(damageTaken);
         DisplayDamage();
     }
 
-    private async void DisplayDamage()
+    public void DisplayDamage()
     {
-        DamageText.gameObject.SetActive(true);
-        await Task.Delay(1000);
-        DamageText.gameObject.SetActive(false);
+        StartCoroutine(FlickerEffect());
+        playerTransform.DOShakePosition(0.4f, 0.3f, 10, 90, false, true);
+    }
+
+    IEnumerator FlickerEffect()
+    {
+        int flickerCount = 0;
+        while (flickerCount < 2)
+        {
+            material.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0.2f);
+            yield return new WaitForSeconds(flickerSpeed);
+
+            material.color = originalColor;
+            yield return new WaitForSeconds(flickerSpeed);
+
+            flickerCount++;
+
+        }
     }
 
 }

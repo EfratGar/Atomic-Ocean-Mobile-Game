@@ -13,6 +13,8 @@ public class Shark : Monster
     [SerializeField] private GameObject present;
     [SerializeField] private int damagePlayerTakes;
 
+    private Vector3 sharkLastPos;
+
     protected override void Start()
     {
         base.Start();
@@ -30,7 +32,11 @@ public class Shark : Monster
     public override void Die()
     {
         base.Die();
+        sharkLastPos = transform.position;
         cancellationTokenSource.Cancel();
+        Rigidbody rb = Instantiate(present, sharkLastPos, Quaternion.identity).GetComponent<Rigidbody>();
+        Vector3 randomDirection = new Vector3(UnityEngine.Random.Range(-3f, 3f), -1f, UnityEngine.Random.Range(-3f, 3f));
+        rb.AddForce(randomDirection, ForceMode.Impulse);
     }
 
     private async void AttackPlayer()
