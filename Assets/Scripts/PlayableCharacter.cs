@@ -51,7 +51,7 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     {
         if (collision.gameObject.CompareTag("Spike"))
         {
-            OnGotHit(10);
+            OnGotHit(5);
         }
     }
     public void OnGotHit(int damageTaken)

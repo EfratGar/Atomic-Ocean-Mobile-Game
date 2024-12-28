@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using DG.Tweening;
 
 public class Monster : MonoBehaviour, IDamageable
 {
@@ -15,6 +16,7 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] GameObject coin;
 
     private Vector3 monsterLastPos;
+    private Transform monsterTransform;
 
 
     public event Action OnAttackPlayer = delegate { };
@@ -28,6 +30,7 @@ public class Monster : MonoBehaviour, IDamageable
     {
         enabled = false;
         _currentMonsterHp = maxMonsterHp;
+        monsterTransform = this.transform;
         GetComponent<EnterLevel>().OnEnteredScene += OnEnteredScene;
     }
 
@@ -75,6 +78,7 @@ public class Monster : MonoBehaviour, IDamageable
         if (collision.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(2);
+            monsterTransform.DOShakePosition(0.2f, 0.1f, 10, 90, false, true);
         }
     }
 

@@ -11,7 +11,7 @@ public class JellyFishShoot : MonoBehaviour
             PlayableCharacter player = other.GetComponent<PlayableCharacter>();
             if(player != null)
             {
-                player.OnGotHit(5);
+                player.OnGotHit(10);
             }
         }
     }
