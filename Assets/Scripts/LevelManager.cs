@@ -32,8 +32,7 @@ public class LevelManager : MonoBehaviour
         loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
     }
 
-
-    private void OnMonsterDied()
+    private async void OnMonsterDied()
     {
         _numberOfMonsters--;
         CalculateNumberOfMonstersInLevel();

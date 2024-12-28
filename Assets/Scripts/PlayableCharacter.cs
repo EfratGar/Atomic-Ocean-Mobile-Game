@@ -25,6 +25,13 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         material = GetComponent<SpriteRenderer>().material;
         originalColor = material.color;
         Monster.OnHitPlayer += OnGotHit;
+
+        HealthBar healthBar = FindObjectOfType<HealthBar>();
+        if (healthBar != null)
+        {
+            healthBar.SetCharacter(this);
+        }
+
         CurrentPlayerHP = PlayerHP;
         playerTransform = transform;
     }
