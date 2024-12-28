@@ -24,7 +24,6 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     {
         material = GetComponent<SpriteRenderer>().material;
         originalColor = material.color;
-        Monster.OnHitPlayer += OnGotHit;
 
         HealthBar healthBar = FindObjectOfType<HealthBar>();
         if (healthBar != null)
@@ -42,6 +41,7 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         {
             CurrentPlayerHP -= damageTaken;
             Debug.Log("Player was hit, current HP is " + CurrentPlayerHP);
+            DisplayDamage();
 
         }
         if (CurrentPlayerHP <= 0) 
@@ -58,13 +58,8 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     {
         if (collision.gameObject.CompareTag("Spike"))
         {
-            OnGotHit(10);
+            TakeDamage(10);
         }
-    }
-    public void OnGotHit(int damageTaken)
-    {
-        TakeDamage(damageTaken);
-        DisplayDamage();
     }
 
     public void DisplayDamage()

@@ -5,10 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.TextCore.Text;
 
 public class Monster : MonoBehaviour, IDamageable
 {
-    public delegate void DamageAction(int howMuchDamage);
 
     private int _currentMonsterHp;
     [SerializeField] private int maxMonsterHp = 8;
@@ -20,10 +20,11 @@ public class Monster : MonoBehaviour, IDamageable
 
 
     public event Action OnAttackPlayer = delegate { };
-    public static event DamageAction OnHitPlayer = delegate { };
+    public event Action OnHitPlayer = delegate { };
     public event Action OnReady = delegate { };
     public static event Action OnMonsterDied = delegate { };
     [SerializeField] private GameObject explosionPrefab;
+    private PlayableCharacter _playerRef;
 
 
 
@@ -33,6 +34,7 @@ public class Monster : MonoBehaviour, IDamageable
         _currentMonsterHp = maxMonsterHp;
         monsterTransform = this.transform;
         GetComponent<EnterLevel>().OnEnteredScene += OnEnteredScene;
+        _playerRef = FindFirstObjectByType<PlayableCharacter>();
     }
 
     public void TakeDamage(int damageTaken)
@@ -96,7 +98,8 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected void InvokeOnHitPlayerEvent(int damageToPlayer)
     {
-        OnHitPlayer(damageToPlayer);
+        OnHitPlayer();
+        _playerRef.TakeDamage(damageToPlayer);
     }
 
 

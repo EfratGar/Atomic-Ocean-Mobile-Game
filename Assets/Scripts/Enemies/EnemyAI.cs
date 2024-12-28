@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     private bool _shouldUpdateDetination;
     private float _attackSpeed;
 
+
     private void Start()
     {
         enabled = false;
@@ -40,6 +42,7 @@ public class EnemyAI : MonoBehaviour
         _attackSpeed = agent.speed;
         agent.enabled = false;
         _initPosY = transform.position.y;
+
 
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
@@ -52,7 +55,7 @@ public class EnemyAI : MonoBehaviour
 
         Monster monster = GetComponent<Monster>();
         monster.OnAttackPlayer += BeginAttackOnPlayer;
-        Monster.OnHitPlayer += (_) => OnHitPlayer();
+        monster.OnHitPlayer += OnHitPlayer;
         monster.OnReady += () => enabled = true;
 
         target = FindObjectOfType<PlayableCharacter>().transform;

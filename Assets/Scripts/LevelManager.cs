@@ -12,6 +12,10 @@ public class LevelManager : MonoBehaviour
 
     public event Action LevelCompleted = delegate { };
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     private void Start()
     {
         Monster.OnMonsterDied += OnMonsterDied;
@@ -32,7 +36,7 @@ public class LevelManager : MonoBehaviour
         loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
     }
 
-    private async void OnMonsterDied()
+    private void OnMonsterDied()
     {
         _numberOfMonsters--;
         CalculateNumberOfMonstersInLevel();
