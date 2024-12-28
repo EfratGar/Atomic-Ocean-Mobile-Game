@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 6158263599597820252}
   - component: {fileID: 8206930828204646648}
   m_Layer: 0
-  m_Name: SmallShark
+  m_Name: SmallShark - old
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
