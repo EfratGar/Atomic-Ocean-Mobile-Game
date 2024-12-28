@@ -27,8 +27,8 @@ public class EnemyAI : MonoBehaviour
 
     NavMeshAgent agent;
 
-    private float _initPosY;
-    public event Action OnAttackEnded = delegate { };
+    private Vector3 _initPos;
+    public event Action OnReturnedToOriginalPosition = delegate { };
     private bool _shouldUpdateDetination;
     private float _attackSpeed;
 
@@ -41,7 +41,6 @@ public class EnemyAI : MonoBehaviour
         agent.updateUpAxis = false;
         _attackSpeed = agent.speed;
         agent.enabled = false;
-        _initPosY = transform.position.y;
 
 
         audioSource = GetComponent<AudioSource>();
@@ -56,7 +55,7 @@ public class EnemyAI : MonoBehaviour
         Monster monster = GetComponent<Monster>();
         monster.OnAttackPlayer += BeginAttackOnPlayer;
         monster.OnHitPlayer += OnHitPlayer;
-        monster.OnReady += () => enabled = true;
+        monster.OnReady += OnEnteredScene;
 
         target = FindObjectOfType<PlayableCharacter>().transform;
     }
@@ -71,6 +70,12 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(target.position);
             PlaySwimmingSound(); // Start swimming sound if not already playing
         }
+    }
+
+    private void OnEnteredScene()
+    {
+        enabled = true;
+        _initPos = transform.position;
     }
 
     private void BeginAttackOnPlayer()
@@ -116,7 +121,7 @@ public class EnemyAI : MonoBehaviour
         PlayAttackSound();
         await AttackAnimation();
 
-        Vector2 newPos = new(transform.position.x, _initPosY);
+        Vector2 newPos = _initPos;
         agent.enabled = true;
         agent.speed = postAttackSpeed;
         agent.stoppingDistance = stoppingDistance;
@@ -139,7 +144,7 @@ public class EnemyAI : MonoBehaviour
             await Task.Yield();
 
         Debug.Log("Returned to original position");
-        OnAttackEnded();
+        OnReturnedToOriginalPosition();
         agent.enabled = false;
     }
 

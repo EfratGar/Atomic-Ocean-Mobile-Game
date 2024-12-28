@@ -24,7 +24,7 @@ public class SharkMovement : MonoBehaviour
         enabled = false;
         Shark shark = GetComponent<Shark>();
         shark.OnAttackPlayer += () => _shouldMove = false;
-        shark.OnNavAgentBasedMovementEnded += OnStartMovingBackUp;
+        shark.OnReturnedToOriginalPosition += ReturnedToOriginalPosition;
         shark.OnReady += StartMoving;
 
         startPosition = transform.position;
@@ -89,9 +89,8 @@ public class SharkMovement : MonoBehaviour
         _shouldMove = true;
     }
 
-    private void OnStartMovingBackUp()
+    private void ReturnedToOriginalPosition()
     {
-        startPosition = transform.position;
         _shouldMove = true;
     }
 }

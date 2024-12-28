@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Shark : Monster
 {
     [SerializeField] private float attackRate;
-    public event Action OnNavAgentBasedMovementEnded = delegate { };
+    public event Action OnReturnedToOriginalPosition = delegate { };
     private CancellationTokenSource cancellationTokenSource;
     [SerializeField] private GameObject present;
     [SerializeField] private int damagePlayerTakes;
@@ -30,7 +30,7 @@ public class Shark : Monster
         base.Start();
         cancellationTokenSource = new CancellationTokenSource();
 
-        GetComponent<EnemyAI>().OnAttackEnded += OnAttackEnded;
+        GetComponent<EnemyAI>().OnReturnedToOriginalPosition += OnAttackEnded;
     }
 
     protected override void OnEnteredScene()
@@ -110,7 +110,7 @@ public class Shark : Monster
 
     private void OnAttackEnded()
     {
-        OnNavAgentBasedMovementEnded();
+        OnReturnedToOriginalPosition();
         AttackPlayer();
     }
 }
