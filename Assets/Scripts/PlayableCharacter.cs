@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class PlayableCharacter : MonoBehaviour, IDamageable
 {
@@ -9,6 +10,15 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     [Header("Death Flicker")]
     [SerializeField] private float flickerSpeed = 0.06f;
+
+    [Header("Submarine Parts")]
+    [SerializeField] private List<Transform> submarineParts;
+
+    [Header("Explosion Settings")]
+    [SerializeField] private GameObject explosionEffectPrefab; // Explosion VFX
+    [SerializeField] private AudioClip explosionSound; // Explosion Sound Effect
+    [SerializeField] private float explosionForce = 10f; // Explosion Power
+    [SerializeField] private float torqueForce = 5f; // Rotation power
 
     private Material material;
     private Color originalColor;
@@ -50,6 +60,8 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        //Starting sumbarine explosion effect
+        ExplodeSubmarine();
         // Here will be level end popup + animation
         Destroy(gameObject);
     }
@@ -59,6 +71,46 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
         if (collision.gameObject.CompareTag("Spike"))
         {
             TakeDamage(10);
+        }
+    }
+
+    private void ExplodeSubmarine()
+    {
+        foreach (Transform part in submarineParts)
+        {
+            if (part == null) continue;
+
+            part.SetParent(null);
+
+            // Adding Rigidbody2D to a part
+            Rigidbody2D rb = part.gameObject.GetComponent<Rigidbody2D>();
+            if (rb == null)
+            {
+                rb = part.gameObject.AddComponent<Rigidbody2D>();
+            }
+
+            // Adding random explosion power
+            Vector2 explosionDirection = Random.insideUnitCircle.normalized;
+            rb.AddForce(explosionDirection * explosionForce, ForceMode2D.Impulse);
+
+            // Adding random rotation
+            float randomTorque = Random.Range(-torqueForce, torqueForce);
+            rb.AddTorque(randomTorque, ForceMode2D.Impulse);
+
+            // Destroying the part after a ceratin time
+            Destroy(part.gameObject, 5f);
+        }
+
+        // Turning on the explosion
+        if (explosionEffectPrefab != null)
+        {
+            Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        // Turning on explosion sound effect
+        if (explosionSound != null)
+        {
+            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
         }
     }
 
