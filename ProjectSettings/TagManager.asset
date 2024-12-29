@@ -7,17 +7,20 @@ TagManager:
   - Monster
   - Bullet
   - Spike
+  - Ground
+  - Present
+  - Crab
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Effects
   - Water
   - UI
   - Boss
   - Lightning
-  - 
-  - 
+  - Coin
+  - GroundCollider
   - 
   - 
   - 

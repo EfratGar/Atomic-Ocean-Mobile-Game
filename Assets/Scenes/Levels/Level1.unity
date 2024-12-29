@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -272,13 +272,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: NuclearPaffFish (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 5235064192011153235, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -97
+      value: -81.5
       objectReference: {fileID: 0}
     - target: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_LocalPosition.x

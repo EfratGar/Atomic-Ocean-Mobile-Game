@@ -6,10 +6,6 @@ public class SeaWeedAnimation : MonoBehaviour
     [SerializeField] private float scaleAmplitude = 0.05f; 
     [SerializeField] private float scaleSpeed = 2.0f;
 
-    [Header("Sway Animation Settings")]
-    [SerializeField] private float swayAmplitude = 0.005f;
-    [SerializeField] private float swaySpeed = 1f; 
-
     private Vector3 startScale;
     private Vector3 startPosition;
 

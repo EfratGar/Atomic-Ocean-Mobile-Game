@@ -6,15 +6,20 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private int _numberOfMonsters;
-    private int _levelIndex;
+    [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
     [SerializeField] private float delayBetweenLevels;
 
+    public event Action LevelCompleted = delegate { };
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     private void Start()
     {
-        _levelIndex = 1;
         Monster.OnMonsterDied += OnMonsterDied;
-        LoadLevel(_levelIndex); // Loads the first level
+        LoadLevel(levelIndex); // Loads the first level
     }
 
 
@@ -31,15 +36,15 @@ public class LevelManager : MonoBehaviour
         loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
     }
 
-
     private void OnMonsterDied()
     {
         _numberOfMonsters--;
         CalculateNumberOfMonstersInLevel();
         if (_numberOfMonsters <= 0)
         {
+            LevelCompleted();
             AsyncOperation unloadLevelOperation = 
-                SceneManager.UnloadSceneAsync(GetLevelSceneName(_levelIndex));
+                SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
             unloadLevelOperation.completed += LevelUnloaded;
         }
     }
@@ -47,8 +52,8 @@ public class LevelManager : MonoBehaviour
     private async void LevelUnloaded(AsyncOperation unloadLevelOperation)
     {
         await Task.Delay(TimeSpan.FromSeconds(delayBetweenLevels)); 
-        _levelIndex++;
-        LoadLevel(_levelIndex);
+        levelIndex++;
+        LoadLevel(levelIndex);
     }
 
     private string GetLevelSceneName(int levelIndex)
@@ -66,6 +71,11 @@ public class LevelManager : MonoBehaviour
         string scenePath = SceneUtility.GetScenePathByBuildIndex(levelIndex);
         int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
         return loadedSceneBuildIndex > 0;
+    }
+
+    public void MoveToActiveScene(GameObject objectToMove)
+    {
+        SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetActiveScene());
     }
 }
 

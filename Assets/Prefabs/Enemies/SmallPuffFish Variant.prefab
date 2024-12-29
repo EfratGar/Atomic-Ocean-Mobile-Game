@@ -47,9 +47,41 @@ PrefabInstance:
       propertyPath: transitionToStartPositionDuration
       value: 0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 1531233424678393673, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531233424678393673, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.060588475
+      objectReference: {fileID: 0}
     - target: {fileID: 2338392524923116535, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: m_Name
       value: SmallPuffFish Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846422480541984334, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846422480541984334, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846422480541984334, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208257422252794167, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208257422252794167, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208257422252794167, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4967073443088462592, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
       propertyPath: maxFireRate
@@ -111,6 +143,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7808551281415927474, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808551281415927474, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.060588475
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3354951530446194337, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
     m_RemovedGameObjects:
@@ -142,6 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMonsterHp: 7
+  coin: {fileID: 6199118014606944154, guid: 2c31a7b397ef223438e8c0f6700d068c, type: 3}
+  explosionPrefab: {fileID: 2364789511137378134, guid: e3dac194ebbe2b84db5b8f7098bc1876, type: 3}
 --- !u!4 &5488314517718521722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6257617504353484483, guid: 14d027fbb056bb74897d9840e601b87f, type: 3}
