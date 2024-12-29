@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 22e976f0f823698429545bc04d62ca87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0b7c86c6765c7641a6eb0bd8596ceb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,8 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustForce: 2
-  maxSpeed: 15
-  quickTurnMultiplier: 2
   tiltAngle: 20
   tiltSmoothness: 3
   floatStrength: 0.5
@@ -217,7 +215,7 @@ MonoBehaviour:
   - {x: 5.12, y: -5.120001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -104438
+  m_InstanceId: 31602
   m_LocalBounds:
     m_Center: {x: 0, y: -0.0000009536743, z: 0}
     m_Extent: {x: 5.12, y: 5.12, z: 0}
@@ -329,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad6dce5b91fe614185193d3dd7f909f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageText: {fileID: 0}
   hitCooldown: 1
+  flickerSpeed: 0.06
   <PlayerHP>k__BackingField: 100
 --- !u!70 &1428110662719173325
 CapsuleCollider2D:
@@ -586,7 +584,7 @@ MonoBehaviour:
   - {x: 4.5454545, y: -4.545454, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -104456
+  m_InstanceId: 31608
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 4.5454545, y: 4.545454, z: 0}
