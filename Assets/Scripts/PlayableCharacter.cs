@@ -19,6 +19,9 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     [SerializeField] private float explosionForce = 10f; // Explosion Power
     [SerializeField] private float torqueForce = 5f; // Rotation power
 
+    [SerializeField] private float MassExplosionParts;
+    [SerializeField] private float GravityExplosionParts;
+
     private Material material;
     private Color originalColor;
 
@@ -87,6 +90,8 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             {
                 rb = part.gameObject.AddComponent<Rigidbody2D>();
             }
+            rb.mass = MassExplosionParts;
+            rb.gravityScale = GravityExplosionParts;
 
             // Adding random explosion power
             Vector2 explosionDirection = Random.insideUnitCircle.normalized;
@@ -97,7 +102,7 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             rb.AddTorque(randomTorque, ForceMode2D.Impulse);
 
             // Destroying the part after a ceratin time
-            Destroy(part.gameObject, 7f);
+            Destroy(part.gameObject, 10f);
         }
 
         // Turning on the explosion
