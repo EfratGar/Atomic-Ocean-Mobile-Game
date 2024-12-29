@@ -22,6 +22,8 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     [SerializeField] private float MassExplosionParts;
     [SerializeField] private float GravityExplosionParts;
 
+    [Header("Hurt Settings")]
+    [SerializeField] private GameObject HurtSubmarineEffectPrefab; // Explosion VFX
     private Material material;
     private Color originalColor;
 
@@ -130,6 +132,26 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
     {
         StartCoroutine(FlickerEffect());
         playerTransform.DOShakePosition(0.4f, 0.3f, 10, 90, false, true);
+
+        // Turning on the explosion
+        if (HurtSubmarineEffectPrefab != null)
+        {
+            Instantiate(HurtSubmarineEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        // Play hurt submarine sound
+        if (HurtSubmarineEffectPrefab != null)
+        {
+            AudioClip hurtSubmarine = HurtSubmarineEffectPrefab.GetComponent<AudioSource>()?.clip;
+            if (hurtSubmarine != null)
+            {
+                AudioSource.PlayClipAtPoint(hurtSubmarine, transform.position); // Adjust volume as needed
+            }
+            else
+            {
+                Debug.LogError("No AudioClip found on HurtSubmarineEffectPrefab.");
+            }
+        }
     }
 
     IEnumerator FlickerEffect()
