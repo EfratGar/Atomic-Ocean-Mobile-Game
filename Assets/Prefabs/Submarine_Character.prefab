@@ -393,7 +393,7 @@ MonoBehaviour:
   - {x: 5.12, y: -5.120001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37816
+  m_InstanceId: 48966
   m_LocalBounds:
     m_Center: {x: 0, y: -0.0000009536743, z: 0}
     m_Extent: {x: 5.12, y: 5.12, z: 0}
@@ -517,9 +517,9 @@ MonoBehaviour:
   - {fileID: 153560794381982855}
   - {fileID: 4533559123340894145}
   - {fileID: 7135708165592055083}
-  explosionEffectPrefab: {fileID: 0}
-  explosionSound: {fileID: 0}
-  explosionForce: 10
+  explosionEffectPrefab: {fileID: 2364789511137378134, guid: 46bf9451be933a644ad20e92c10f0c12, type: 3}
+  explosionAudioSource: {fileID: 0}
+  explosionForce: 5
   torqueForce: 5
   <PlayerHP>k__BackingField: 100
 --- !u!70 &1428110662719173325
@@ -860,7 +860,7 @@ MonoBehaviour:
   - {x: 4.5454545, y: -4.545454, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37836
+  m_InstanceId: 48988
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 4.5454545, y: 4.545454, z: 0}

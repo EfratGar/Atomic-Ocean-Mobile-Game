@@ -16,7 +16,6 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     [Header("Explosion Settings")]
     [SerializeField] private GameObject explosionEffectPrefab; // Explosion VFX
-    [SerializeField] private AudioClip explosionSound; // Explosion Sound Effect
     [SerializeField] private float explosionForce = 10f; // Explosion Power
     [SerializeField] private float torqueForce = 5f; // Rotation power
 
@@ -107,10 +106,18 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
         }
 
-        // Turning on explosion sound effect
-        if (explosionSound != null)
+        // Play explosion sound
+        if (explosionEffectPrefab != null)
         {
-            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+            AudioClip explosionSound = explosionEffectPrefab.GetComponent<AudioSource>()?.clip;
+            if (explosionSound != null)
+            {
+                AudioSource.PlayClipAtPoint(explosionSound, transform.position); // Adjust volume as needed
+            }
+            else
+            {
+                Debug.LogError("No AudioClip found on explosionEffectPrefab.");
+            }
         }
     }
 
