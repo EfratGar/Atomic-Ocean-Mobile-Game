@@ -93,217 +93,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
-  rigSpriteImportData:
-  - name: TopWindow
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 708
-      width: 353
-      height: 280
-    spriteID: efcfd273fb1f9ea40a1f9b145fa556c0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 708}
-    spritePosition: {x: 320, y: 630}
-  - name: TopRightWing
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 385
-      y: 880
-      width: 108
-      height: 115
-    spriteID: bfe38a497612c6c45985dfc793b1680d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 385, y: 880}
-    spritePosition: {x: 671, y: 476}
-  - name: TopLeftWing
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 385
-      y: 750
-      width: 106
-      height: 122
-    spriteID: 8a6d0297bfc43e542aa784a5d99afdf4
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 385, y: 750}
-    spritePosition: {x: 214, y: 469}
-  - name: AirSumbarinePart
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 385
-      y: 273
-      width: 143
-      height: 287
-    spriteID: 57db9e8a721ef2b4eb9b14d1afff27b1
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 385, y: 273}
-    spritePosition: {x: 424, y: 127}
-  - name: BottonRightWing
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 536
-      y: 273
-      width: 134
-      height: 131
-    spriteID: 75a4b02301d54004db86c6e762056afb
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 536, y: 273}
-    spritePosition: {x: 551, y: 114}
-  - name: BottonLeftWing
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 536
-      y: 412
-      width: 134
-      height: 129
-    spriteID: 12bdecd68e4334644bd991a653238bfd
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 536, y: 412}
-    spritePosition: {x: 306, y: 115}
-  - name: Tail
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 499
-      y: 750
-      width: 62
-      height: 98
-    spriteID: e1a42c7aa4963c545965402dffedb75e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 499, y: 750}
-    spritePosition: {x: 461, y: 23}
-  - name: MainWindow
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 385
-      y: 568
-      width: 200
-      height: 174
-    spriteID: e4d526700f9ceaa46a498d1415c435da
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 385, y: 568}
-    spritePosition: {x: 393, y: 451}
-  - name: BottonBody
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 385
-      y: 4
-      width: 319
-      height: 261
-    spriteID: 12b17f83d462dbd45add2b5c08f69e09
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 385, y: 4}
-    spritePosition: {x: 333, y: 109}
-  - name: MainBody
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 373
-      height: 696
-    spriteID: 12324d006bec0154f83ba9260f559006
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 309, y: 208}
+  rigSpriteImportData: []
   characterData:
     bones: []
     parts: []
@@ -348,8 +138,8 @@ ScriptedImporter:
     layerID: 29
     mosaicPosition: {x: 4, y: 708}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: TopRightWing
     spriteName: TopRightWing
     isGroup: 0
@@ -358,8 +148,8 @@ ScriptedImporter:
     layerID: 35
     mosaicPosition: {x: 385, y: 880}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: TopLeftWing
     spriteName: TopLeftWing
     isGroup: 0
@@ -368,8 +158,8 @@ ScriptedImporter:
     layerID: 36
     mosaicPosition: {x: 385, y: 750}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: AirSumbarinePart
     spriteName: AirSumbarinePart
     isGroup: 0
@@ -378,8 +168,8 @@ ScriptedImporter:
     layerID: 22
     mosaicPosition: {x: 385, y: 273}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: BottonRightWing
     spriteName: BottonRightWing
     isGroup: 0
@@ -388,8 +178,8 @@ ScriptedImporter:
     layerID: 33
     mosaicPosition: {x: 536, y: 273}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: BottonLeftWing
     spriteName: BottonLeftWing
     isGroup: 0
@@ -398,8 +188,8 @@ ScriptedImporter:
     layerID: 34
     mosaicPosition: {x: 536, y: 412}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Tail
     spriteName: Tail
     isGroup: 0
@@ -408,8 +198,8 @@ ScriptedImporter:
     layerID: 37
     mosaicPosition: {x: 499, y: 750}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: MainWindow
     spriteName: MainWindow
     isGroup: 0
@@ -418,8 +208,8 @@ ScriptedImporter:
     layerID: 32
     mosaicPosition: {x: 385, y: 568}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: BottonBody
     spriteName: BottonBody
     isGroup: 0
@@ -428,8 +218,8 @@ ScriptedImporter:
     layerID: 38
     mosaicPosition: {x: 385, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: MainBody
     spriteName: MainBody
     isGroup: 0
@@ -438,8 +228,8 @@ ScriptedImporter:
     layerID: 30
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   importFileNodeState: 1
