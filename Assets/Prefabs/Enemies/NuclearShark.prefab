@@ -588,7 +588,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -614,7 +614,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swaySpeed: 8
   swayAmount: 10
-  forwardSpeed: 12
   rightTail: {fileID: 4097692052976846748}
   tailSwaySpeed: 2
   tailSwayAmount: 15

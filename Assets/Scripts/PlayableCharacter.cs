@@ -97,7 +97,7 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             rb.AddTorque(randomTorque, ForceMode2D.Impulse);
 
             // Destroying the part after a ceratin time
-            Destroy(part.gameObject, 5f);
+            Destroy(part.gameObject, 7f);
         }
 
         // Turning on the explosion
