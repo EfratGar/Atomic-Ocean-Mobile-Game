@@ -6200,7 +6200,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.325, y: 0.325, z: 0.325}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1472013137470955997}
@@ -6306,7 +6306,6 @@ MonoBehaviour:
   explosionPrefab: {fileID: 0}
   swaySpeed: 3
   swayAmount: 5
-  forwardSpeed: 2
   leftTentacles:
   - {fileID: 5568162606638577959}
   - {fileID: 8321701671776774603}
@@ -6399,7 +6398,7 @@ MonoBehaviour:
   - {x: 5.12, y: -5.12, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -80668
+  m_InstanceId: 49766
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5.12, y: 5.12, z: 0}

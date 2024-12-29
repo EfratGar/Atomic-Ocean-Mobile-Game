@@ -357,8 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c403004474bbdbe41b6fb9b8b81128d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inflateSpeed: 1.5
-  deflateSpeed: 1.5
+  inflateSpeed: 2
+  deflateSpeed: 2
   maxScale: 1.2
   minScale: 0.5
   leftFin: {fileID: 6776959538618710221}
