@@ -8,6 +8,8 @@ public class Present : MonoBehaviour
 
     public static event Action OnCollected = delegate { };
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip collectPresentSound; // Collecting present sound effect
     Rigidbody2D rb;
 
     private void Start()
@@ -20,12 +22,20 @@ public class Present : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             OnCollected();
+            PlayCollectSound();
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Ground"))
         {
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Static;
+        }
+    }
+    private void PlayCollectSound()
+    {
+        if (collectPresentSound != null)
+        {
+            AudioSource.PlayClipAtPoint(collectPresentSound, transform.position);
         }
     }
 }
