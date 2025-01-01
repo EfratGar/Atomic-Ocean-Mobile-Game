@@ -300,6 +300,14 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2713840354617548435, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776869478916160568, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 1913668576}
     - target: {fileID: 5308136897368337120, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
       propertyPath: m_Name
       value: Coin_Burst
@@ -308,7 +316,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7069232015592221553, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932426999400293831, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932426999400293831, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 73f29261810cbd8469f469675399e69a, type: 3}
+    - target: {fileID: 7932426999400293831, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7069232015592221553, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2930,11 +2955,16 @@ MonoBehaviour:
   closedLidSprite: {fileID: 21300000, guid: d71a5f64ac763d34ba55d611e4d46514, type: 3}
   openLidSprite: {fileID: 21300000, guid: b6b7a5411dbfeef4384606f2a1482055, type: 3}
   coinParticlesPrefab: {fileID: 5308136897368337120, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
-  switchSpeed: 0.5
+  switchSpeed: 0.8
   closedLidSortingOrder: 12
   openLidSortingOrder: 10
   closedLid: {fileID: 1900489978}
   openLid: {fileID: 357782210}
+--- !u!82 &1913668576 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7932426999400293831, guid: 3a972f75f59d3a544a92d0fafdf52ef8, type: 3}
+  m_PrefabInstance: {fileID: 78516948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2001110731
 GameObject:
   m_ObjectHideFlags: 0
