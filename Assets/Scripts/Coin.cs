@@ -11,6 +11,9 @@ public class Coin : MonoBehaviour
     private Tweener _coinFallTween;
     private SpriteRenderer coinRenderer;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip collectSound; // Collecting coin sound effect
+
     Rigidbody2D rb;
 
     private void Start()
@@ -27,6 +30,7 @@ public class Coin : MonoBehaviour
         if (collision.CompareTag("Player") && !hasTriggered)
         {
             hasTriggered = true;
+            PlayCollectSound();
             coinManager.ChangeCoins(value);
             Destroy(gameObject);
         }
@@ -42,6 +46,13 @@ public class Coin : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Static;
             FadeCoin();
+        }
+    }
+    private void PlayCollectSound()
+    {
+        if (collectSound != null)
+        {
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
         }
     }
 

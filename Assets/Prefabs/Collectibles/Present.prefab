@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2811963133716212240, guid: ef928ba30b0aba447a222cb7b31741a4, type: 3}
+  collectPresentSound: {fileID: 8300000, guid: 0c5cd5aedf916414b8b2437ed30c5a16, type: 3}
 --- !u!50 &-583423910783657987
 Rigidbody2D:
   serializedVersion: 4

@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Present
   - Crab
+  - UI
   layers:
   - Default
   - TransparentFX

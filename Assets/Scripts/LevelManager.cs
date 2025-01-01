@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
     [SerializeField] private float delayBetweenLevels;
+    [SerializeField] private GameObject victoryScreen; // Reference to the victory screen
 
     public event Action LevelCompleted = delegate { };
 
@@ -28,6 +29,7 @@ public class LevelManager : MonoBehaviour
         if (!DoesSceneExist(levelIndex))
         {
             Debug.Log("You won");
+            ShowVictoryScreen();
             return;
         }
 
@@ -43,6 +45,12 @@ public class LevelManager : MonoBehaviour
         if (_numberOfMonsters <= 0)
         {
             LevelCompleted();
+            // If there are no more levels, show the victory screen
+            if (!DoesSceneExist(levelIndex + 1))
+            {
+                ShowVictoryScreen();
+                return;
+            }
             AsyncOperation unloadLevelOperation = 
                 SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
             unloadLevelOperation.completed += LevelUnloaded;
@@ -64,6 +72,7 @@ public class LevelManager : MonoBehaviour
     private void CalculateNumberOfMonstersInLevel()
     {
         _numberOfMonsters = FindObjectsByType<Monster>(FindObjectsSortMode.None).Length;
+        Debug.Log($"Number of monsters in level: {_numberOfMonsters}");
     }
 
     private bool DoesSceneExist(int levelIndex)
@@ -76,6 +85,18 @@ public class LevelManager : MonoBehaviour
     public void MoveToActiveScene(GameObject objectToMove)
     {
         SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetActiveScene());
+    }
+
+    private void ShowVictoryScreen()
+    {
+        if (victoryScreen != null)
+        {
+            victoryScreen.SetActive(true); // Activate the victory screen
+        }
+        else
+        {
+            Debug.LogWarning("Victory screen is not assigned in the inspector!");
+        }
     }
 }
 
