@@ -1,49 +1,45 @@
 using UnityEngine;
 
-public class ChestAnimation : MonoBehaviour
+public class ChestLidSpriteSwitcher : MonoBehaviour
 {
-    [SerializeField] private Transform topChest; 
-    [SerializeField] private Transform bottomChest; 
-    [SerializeField] private ParticleSystem coinParticles; 
-    [SerializeField] private float openSpeed = 2f; 
-    [SerializeField] private float maxOpenAngle = 70f; 
-    [SerializeField] private float particleDelay = 0.5f; 
+    [SerializeField] private SpriteRenderer lidRenderer; // SpriteRenderer for the lid
+    [SerializeField] private Sprite closedLidSprite; // Sprite for the closed lid
+    [SerializeField] private Sprite openLidSprite; // Sprite for the open lid
+    [SerializeField] private GameObject coinParticlesPrefab; // Prefab for the coin particle effect
+    [SerializeField] private float switchSpeed = 0.5f; // Time before switching the lid sprite
+    [SerializeField] private int closedLidSortingOrder = 5; // Sorting order for closed lid
+    [SerializeField] private int openLidSortingOrder = 3; // Sorting order for open lid
+    [SerializeField] private Transform closedLid;
+    [SerializeField] private Transform openLid;
 
-    private bool isOpening = false;
-    private bool isOpened = false;
-    private float currentAngle = 0f;
-
-    void Update()
+    private void Start()
     {
-        if (isOpening && !isOpened)
-        {
-            currentAngle += Time.deltaTime * openSpeed * maxOpenAngle;
-            topChest.localRotation = Quaternion.Euler(-currentAngle, 0f, 0f);
+        // Start the sequence to open the chest
+        Invoke(nameof(SwitchToOpenLid), switchSpeed);
+    }
 
-            if (currentAngle >= maxOpenAngle)
+    private void SwitchToOpenLid()
+    {
+        if (lidRenderer != null && openLidSprite != null)
+        {
+            // Switch the lid to the open sprite
+            lidRenderer.sprite = openLidSprite;
+
+            // Update sorting order to ensure proper layering
+            lidRenderer.sortingOrder = openLidSortingOrder;
+
+            // Adjust the position and rotation of the open lid
+            if (openLid != null)
             {
-                currentAngle = maxOpenAngle;
-                isOpening = false;
-                isOpened = true;
-
-                Invoke(nameof(PlayParticles), particleDelay);
+                lidRenderer.transform.localPosition = openLid.localPosition;
+                lidRenderer.transform.localRotation = openLid.localRotation;
             }
+
+        }
+        else
+        {
+            Debug.LogError("LidRenderer or OpenLidSprite is not assigned!");
         }
     }
 
-    public void OpenChest()
-    {
-        if (!isOpening && !isOpened)
-        {
-            isOpening = true;
-        }
-    }
-
-    private void PlayParticles()
-    {
-        if (coinParticles != null)
-        {
-            coinParticles.Play();
-        }
-    }
 }
