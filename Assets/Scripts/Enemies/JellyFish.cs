@@ -22,6 +22,10 @@ public class JellyFish : Monster
     [SerializeField] private float soundInterval = 2.0f; // Interval between each sound
     private float soundTimer;
 
+    [Header("BigBoss Death Animation")]
+    [SerializeField] private GameObject BigBossExplosionPrefab;
+
+
     private Vector3 startPosition;
 
     protected override void Start()
@@ -113,17 +117,43 @@ public class JellyFish : Monster
 
     public override void Die()
     {
-        base.Die();
-
-        // Stop particle system and sound
-        if (jellyFishShoot != null)
+        StartCoroutine(HandleDeathWithExplosion());
+    }
+    private IEnumerator HandleDeathWithExplosion()
+    {
+        if (BigBossExplosionPrefab != null)
         {
-            jellyFishShoot.Stop();
+            Vector3 JellyFishPosition = transform.position;
+
+            GameObject explosion = Instantiate(BigBossExplosionPrefab, JellyFishPosition, Quaternion.identity);
+
+            // Stop particle system and sound
+            if (jellyFishShoot != null)
+            {
+                jellyFishShoot.Stop();
+            }
+
+            if (audioSource != null)
+            {
+                audioSource.Stop();
+            }
+
+            yield return new WaitForSeconds(10.0f);
+
+            base.Die();
+
+            //Destroy Jellyfish
+            Destroy(gameObject);
+
+            //Destroy explosion effect 
+            Destroy(explosion, 10.0f);
         }
 
-        if (audioSource != null)
+        else
         {
-            audioSource.Stop();
+            base.Die();
+            Destroy(gameObject);
         }
+
     }
 }
