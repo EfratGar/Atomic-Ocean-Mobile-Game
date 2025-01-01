@@ -138,19 +138,18 @@ public class JellyFish : Monster
                 audioSource.Stop();
             }
 
-            yield return new WaitForSeconds(10.0f);
-
-            base.Die();
+            yield return new WaitForSeconds(1.5f);
 
             //Destroy Jellyfish
             Destroy(gameObject);
 
             //Destroy explosion effect 
-            Destroy(explosion, 10.0f);
+            Destroy(explosion, 5.0f);
         }
 
         else
         {
+            Debug.Log("effect is null");
             base.Die();
             Destroy(gameObject);
         }
