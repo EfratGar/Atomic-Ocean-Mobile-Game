@@ -27,14 +27,16 @@ public class LevelManager : MonoBehaviour
         PlayableCharacter player = FindObjectOfType<PlayableCharacter>();
 
         if (player != null)
-        {
             player.YouDiedPopUp += YouDiedSceneLoad;
-        }
+    }
+
+    private void OnDestroy()
+    {
+        Monster.OnMonsterDied -= OnMonsterDied;
     }
 
     private AsyncOperation UnloadCurrentLevel()
     {
-        Debug.Log("The scene that's going to be unloaded is " + GetLevelSceneName(levelIndex));
         AsyncOperation unloadLevelOperation = SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
         return unloadLevelOperation;
     }
@@ -61,11 +63,7 @@ public class LevelManager : MonoBehaviour
         {
             GameOverSceneLoaded();
             RetryButton retryButton = FindFirstObjectByType<RetryButton>();
-            retryButton.GameRestarted += () =>
-            {
-                //SceneManager.UnloadSceneAsync(GetLevelSceneName(GameOverSceneIndex));
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            };
+            retryButton.GameRestarted += () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         };
     }
 
@@ -91,16 +89,14 @@ public class LevelManager : MonoBehaviour
         _numberOfMonsters = FindObjectsByType<Monster>(FindObjectsSortMode.None).Length;
     }
 
-    //private bool DoesSceneExist(int levelIndex)
-    //{
-    //    string scenePath = SceneUtility.GetScenePathByBuildIndex(levelIndex);
-    //    int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
-    //    return loadedSceneBuildIndex > 0;
-    //}
-
     public void MoveToActiveScene(GameObject objectToMove)
     {
         SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetActiveScene());
+    }
+
+    public void MoveToLevelScene(GameObject objectToMove)
+    {
+        SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetSceneByName(GetLevelSceneName(levelIndex)));
     }
 }
 

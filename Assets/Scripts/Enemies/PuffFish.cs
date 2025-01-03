@@ -25,9 +25,15 @@ public class PuffFish : Monster
         }
 
         // Create small PuffFish
-        Vector3 offset = Vector3.right * horizontalOffset;
-        Instantiate(smallPuffFishPrefab, basePosition + offset, Quaternion.identity);
-        Instantiate(smallPuffFishPrefab, basePosition - offset, Quaternion.identity);
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+        if (levelManager != null)
+        {
+            Vector3 offset = Vector3.right * horizontalOffset;
+            Monster puffFish = Instantiate(smallPuffFishPrefab, basePosition + offset, Quaternion.identity);
+            levelManager.MoveToLevelScene(puffFish.gameObject);
+            Monster puffFish2 = Instantiate(smallPuffFishPrefab, basePosition - offset, Quaternion.identity);
+            levelManager.MoveToLevelScene(puffFish2.gameObject);
+        }
 
         base.Die();
     }
