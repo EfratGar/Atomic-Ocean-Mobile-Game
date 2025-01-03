@@ -262,7 +262,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
   - {x: 5.12, y: -5.120001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58328
+  m_InstanceId: -29750
   m_LocalBounds:
     m_Center: {x: 0, y: -0.0000009536743, z: 0}
     m_Extent: {x: 5.12, y: 5.12, z: 0}
@@ -407,11 +407,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3f0208ecd0a33584493cdc7a942b04d2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 78abe19d171f6e44b8c8ab7038d78612, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.55
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -522,7 +522,8 @@ MonoBehaviour:
   torqueForce: 20
   MassExplosionParts: 10
   GravityExplosionParts: 0.5
-  <PlayerHP>k__BackingField: 80
+  HurtSubmarineEffectPrefab: {fileID: 2364789511137378134, guid: 3d85a369a93336145adaf5ec2820b850, type: 3}
+  <PlayerHP>k__BackingField: 100
 --- !u!70 &1428110662719173325
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -861,7 +862,7 @@ MonoBehaviour:
   - {x: 4.5454545, y: -4.545454, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58348
+  m_InstanceId: -29772
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 4.5454545, y: 4.545454, z: 0}

@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 using DG.Tweening;
 using System.Collections.Generic;
+using System;
+using UnityEngine.SceneManagement;
 
 public class PlayableCharacter : MonoBehaviour, IDamageable
 {
@@ -29,9 +31,12 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
 
     private Transform playerTransform;
 
+    public event Action YouDiedPopUp = delegate { };
 
     [field: SerializeField] public int PlayerHP { get; private set; } = 100;
     public int CurrentPlayerHP { get; private set; }
+
+
 
 
     private void Start()
@@ -62,12 +67,19 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             Die();
     }
 
+    /*private void AddReactivationListener()
+    {
+        RetryButton retryButton = FindFirstObjectByType<RetryButton>();
+        retryButton.GameRestarted += () => gameObject.SetActive(true);
+    }*/
+
     public void Die()
     {
+        // Here will be level end popup + animation
+        YouDiedPopUp();
         //Starting sumbarine explosion effect
         ExplodeSubmarine();
-        // Here will be level end popup + animation
-        Destroy(gameObject);
+        Destroy(gameObject);   
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -96,11 +108,11 @@ public class PlayableCharacter : MonoBehaviour, IDamageable
             rb.gravityScale = GravityExplosionParts;
 
             // Adding random explosion power
-            Vector2 explosionDirection = Random.insideUnitCircle.normalized;
+            Vector2 explosionDirection = UnityEngine.Random.insideUnitCircle.normalized;
             rb.AddForce(explosionDirection * explosionForce, ForceMode2D.Impulse);
 
             // Adding random rotation
-            float randomTorque = Random.Range(-torqueForce, torqueForce);
+            float randomTorque = UnityEngine.Random.Range(-torqueForce, torqueForce);
             rb.AddTorque(randomTorque, ForceMode2D.Impulse);
 
             // Destroying the part after a ceratin time

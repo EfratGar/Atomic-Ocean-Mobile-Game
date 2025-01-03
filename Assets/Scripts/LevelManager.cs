@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +10,11 @@ public class LevelManager : MonoBehaviour
     private int _numberOfMonsters;
     [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
+    private const int GameOverSceneIndex = 8;
     [SerializeField] private float delayBetweenLevels;
-    [SerializeField] private GameObject victoryScreen; // Reference to the victory screen
 
     public event Action LevelCompleted = delegate { };
+    public event Action GameOverSceneLoaded = delegate { };
 
     private void Awake()
     {
@@ -20,22 +23,20 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Monster.OnMonsterDied += OnMonsterDied;
-        LoadLevel(levelIndex); // Loads the first level
+        LoadLevel(levelIndex, 0);
+        PlayableCharacter player = FindObjectOfType<PlayableCharacter>();
+
+        if (player != null)
+        {
+            player.YouDiedPopUp += YouDiedSceneLoad;
+        }
     }
 
-
-    public void LoadLevel(int levelIndex)
+    private AsyncOperation UnloadCurrentLevel()
     {
-        if (!DoesSceneExist(levelIndex))
-        {
-            Debug.Log("You won");
-            ShowVictoryScreen();
-            return;
-        }
-
-        AsyncOperation loadLevelOperation = 
-            SceneManager.LoadSceneAsync(GetLevelSceneName(levelIndex), LoadSceneMode.Additive);
-        loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
+        Debug.Log("The scene that's going to be unloaded is " + GetLevelSceneName(levelIndex));
+        AsyncOperation unloadLevelOperation = SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
+        return unloadLevelOperation;
     }
 
     private void OnMonsterDied()
@@ -45,23 +46,39 @@ public class LevelManager : MonoBehaviour
         if (_numberOfMonsters <= 0)
         {
             LevelCompleted();
-            // If there are no more levels, show the victory screen
-            if (!DoesSceneExist(levelIndex + 1))
-            {
-                ShowVictoryScreen();
-                return;
-            }
-            AsyncOperation unloadLevelOperation = 
-                SceneManager.UnloadSceneAsync(GetLevelSceneName(levelIndex));
-            unloadLevelOperation.completed += LevelUnloaded;
+            int nextLevelIndex = levelIndex + 1;
+            AsyncOperation unloadLevelOperation = UnloadCurrentLevel();
+            unloadLevelOperation.completed += (_) => LoadLevel(nextLevelIndex, delayBetweenLevels);
         }
     }
 
-    private async void LevelUnloaded(AsyncOperation unloadLevelOperation)
+    private async void YouDiedSceneLoad()
     {
-        await Task.Delay(TimeSpan.FromSeconds(delayBetweenLevels)); 
-        levelIndex++;
-        LoadLevel(levelIndex);
+        await Task.Delay(2000);
+        AsyncOperation loadLevelOperation =
+            SceneManager.LoadSceneAsync(GetLevelSceneName(GameOverSceneIndex), LoadSceneMode.Additive);
+        loadLevelOperation.completed += (_) =>
+        {
+            GameOverSceneLoaded();
+            RetryButton retryButton = FindFirstObjectByType<RetryButton>();
+            retryButton.GameRestarted += () =>
+            {
+                //SceneManager.UnloadSceneAsync(GetLevelSceneName(GameOverSceneIndex));
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            };
+        };
+    }
+
+
+    private async void LoadLevel(int nextLevelIndex, float delay)
+    {
+        if(delay > 0)
+            await Task.Delay(TimeSpan.FromSeconds(delay));
+
+        levelIndex = nextLevelIndex;
+        AsyncOperation loadLevelOperation =
+            SceneManager.LoadSceneAsync(GetLevelSceneName(levelIndex), LoadSceneMode.Additive);
+        loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
     }
 
     private string GetLevelSceneName(int levelIndex)
@@ -72,31 +89,18 @@ public class LevelManager : MonoBehaviour
     private void CalculateNumberOfMonstersInLevel()
     {
         _numberOfMonsters = FindObjectsByType<Monster>(FindObjectsSortMode.None).Length;
-        Debug.Log($"Number of monsters in level: {_numberOfMonsters}");
     }
 
-    private bool DoesSceneExist(int levelIndex)
-    {
-        string scenePath = SceneUtility.GetScenePathByBuildIndex(levelIndex);
-        int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
-        return loadedSceneBuildIndex > 0;
-    }
+    //private bool DoesSceneExist(int levelIndex)
+    //{
+    //    string scenePath = SceneUtility.GetScenePathByBuildIndex(levelIndex);
+    //    int loadedSceneBuildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
+    //    return loadedSceneBuildIndex > 0;
+    //}
 
     public void MoveToActiveScene(GameObject objectToMove)
     {
         SceneManager.MoveGameObjectToScene(objectToMove, SceneManager.GetActiveScene());
-    }
-
-    private void ShowVictoryScreen()
-    {
-        if (victoryScreen != null)
-        {
-            victoryScreen.SetActive(true); // Activate the victory screen
-        }
-        else
-        {
-            Debug.LogWarning("Victory screen is not assigned in the inspector!");
-        }
     }
 }
 

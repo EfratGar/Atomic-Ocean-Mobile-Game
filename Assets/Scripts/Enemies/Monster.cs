@@ -68,8 +68,8 @@ public class Monster : MonoBehaviour, IDamageable
         }
         monsterLastPos = transform.position;
         Destroy(gameObject);
+        //OnMonsterDied();
         Instantiate(coin, monsterLastPos, Quaternion.identity);
-
     }
 
     private void OnDestroy()
