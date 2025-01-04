@@ -10,11 +10,11 @@ public class LevelManager : MonoBehaviour
     private int _numberOfMonsters;
     [SerializeField] private int levelIndex;
     private const string BaseLevelSceneName = "Level";
+    private const int VictorySceneIndex = 7;
     private const int GameOverSceneIndex = 8;
     [SerializeField] private float delayBetweenLevels;
 
     public event Action LevelCompleted = delegate { };
-    public event Action GameOverSceneLoaded = delegate { };
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
         PlayableCharacter player = FindObjectOfType<PlayableCharacter>();
 
         if (player != null)
-            player.YouDiedPopUp += YouDiedSceneLoad;
+            player.YouDiedPopUp += () => LoadLevel(GameOverSceneIndex, 2);
     }
 
     private void OnDestroy()
@@ -54,19 +54,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private async void YouDiedSceneLoad()
-    {
-        await Task.Delay(2000);
-        AsyncOperation loadLevelOperation =
-            SceneManager.LoadSceneAsync(GetLevelSceneName(GameOverSceneIndex), LoadSceneMode.Additive);
-        loadLevelOperation.completed += (_) =>
-        {
-            GameOverSceneLoaded();
-            RetryButton retryButton = FindFirstObjectByType<RetryButton>();
-            retryButton.GameRestarted += () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        };
-    }
-
 
     private async void LoadLevel(int nextLevelIndex, float delay)
     {
@@ -76,7 +63,20 @@ public class LevelManager : MonoBehaviour
         levelIndex = nextLevelIndex;
         AsyncOperation loadLevelOperation =
             SceneManager.LoadSceneAsync(GetLevelSceneName(levelIndex), LoadSceneMode.Additive);
-        loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
+        if (IsNextSceneEndScene(nextLevelIndex))
+            loadLevelOperation.completed += (_) => OnEndSceneLoaded();
+        else loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
+    }
+
+    private bool IsNextSceneEndScene(int nextLevelIndex)
+    {
+        return nextLevelIndex == GameOverSceneIndex || nextLevelIndex == VictorySceneIndex;
+    }
+
+    private void OnEndSceneLoaded()
+    {
+        RetryButton retryButton = FindFirstObjectByType<RetryButton>();
+        retryButton.GameRestarted += () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private string GetLevelSceneName(int levelIndex)
