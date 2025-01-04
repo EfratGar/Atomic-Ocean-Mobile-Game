@@ -5,7 +5,6 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 10f;
     private Rigidbody2D rb;
-    public event Action OnDoubleBullet = delegate { };
 
     void Awake()
     {
@@ -21,10 +20,6 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster"))
         {
             OnBecameInvisible();
-        }
-        else if(collision.gameObject.CompareTag("Present"))
-        {
-            OnDoubleBullet();
         }
         else if(collision.gameObject.CompareTag("Crab"))
         {
