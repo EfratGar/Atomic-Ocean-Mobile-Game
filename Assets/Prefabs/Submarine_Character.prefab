@@ -393,7 +393,7 @@ MonoBehaviour:
   - {x: 5.12, y: -5.120001, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -29750
+  m_InstanceId: -808472
   m_LocalBounds:
     m_Center: {x: 0, y: -0.0000009536743, z: 0}
     m_Extent: {x: 5.12, y: 5.12, z: 0}
@@ -523,7 +523,7 @@ MonoBehaviour:
   MassExplosionParts: 10
   GravityExplosionParts: 0.5
   HurtSubmarineEffectPrefab: {fileID: 2364789511137378134, guid: 3d85a369a93336145adaf5ec2820b850, type: 3}
-  <PlayerHP>k__BackingField: 100
+  <PlayerHP>k__BackingField: 200
 --- !u!70 &1428110662719173325
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -862,7 +862,7 @@ MonoBehaviour:
   - {x: 4.5454545, y: -4.545454, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -29772
+  m_InstanceId: -808494
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 4.5454545, y: 4.545454, z: 0}
