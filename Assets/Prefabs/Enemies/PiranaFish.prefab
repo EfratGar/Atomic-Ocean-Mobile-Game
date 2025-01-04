@@ -10,20 +10,19 @@ GameObject:
   m_Component:
   - component: {fileID: 8814905076658352013}
   - component: {fileID: 6391113784119286418}
-  - component: {fileID: 230182029950808670}
   - component: {fileID: 4357634824084026043}
   - component: {fileID: 3596692967794047095}
   - component: {fileID: 1907363521194788350}
-  - component: {fileID: 7629903110835789403}
   - component: {fileID: 5114844592295825406}
   - component: {fileID: 7091471801875101274}
+  - component: {fileID: 2443819764330202506}
   m_Layer: 0
   m_Name: PiranaFish
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8814905076658352013
 Transform:
   m_ObjectHideFlags: 0
@@ -96,27 +95,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &230182029950808670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565909615101513342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d8f4a1da7a02eb449feb3bf41cc1a93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swaySpeed: 2
-  swayAmount: 10
-  rightTail: {fileID: 0}
-  tailSwaySpeed: 2
-  tailSwayAmount: 15
-  leftFin: {fileID: 0}
-  rightFin: {fileID: 0}
-  finSwaySpeed: 3
-  finSwayAmount: 15
 --- !u!70 &4357634824084026043
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +137,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5565909615101513342}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 5.12
   m_Speed: 3.5
@@ -181,7 +159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5565909615101513342}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fdc6b299e8ee8346b5f1dd6bdc9a384, type: 3}
   m_Name: 
@@ -193,30 +171,6 @@ MonoBehaviour:
   postAttackSpeed: 15
   attackSound: {fileID: 8300000, guid: c5eb21c563a58514baed7818655ad94c, type: 3}
   swimSound: {fileID: 8300000, guid: f05a5498541e2e94fa5a225fb60042a5, type: 3}
---- !u!114 &7629903110835789403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565909615101513342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b286e28da4d0c4abb66d5180b44e52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMonsterHp: 30
-  coin: {fileID: 6199118014606944154, guid: 2c31a7b397ef223438e8c0f6700d068c, type: 3}
-  explosionPrefab: {fileID: 5063978680799686511, guid: e1d08654cd99aa041a413fbd0981849d, type: 3}
-  attackRate: 4
-  present: {fileID: 0}
-  damagePlayerTakes: 20
-  sharkExplosionPrefab: {fileID: 5063978680799686511, guid: e1d08654cd99aa041a413fbd0981849d, type: 3}
-  head: {fileID: 0}
-  leftFin: {fileID: 0}
-  rightFin: {fileID: 0}
-  tail: {fileID: 0}
-  partExplosionForce: 3
 --- !u!114 &5114844592295825406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +235,33 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!50 &2443819764330202506
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565909615101513342}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6337502671563548224
 GameObject:
   m_ObjectHideFlags: 0

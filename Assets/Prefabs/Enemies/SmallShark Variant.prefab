@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7229264195159691604, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.3
+      value: 22.6
       objectReference: {fileID: 0}
     - target: {fileID: 7229264195159691604, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.4
+      value: -15.7
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalScale.x
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.72
+      value: -3.48
       objectReference: {fileID: 0}
     - target: {fileID: 7627353279971981615, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -121,14 +121,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8822486143349164281, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
+      propertyPath: attackRate
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822486143349164281, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: maxMonsterHp
-      value: 35
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8822486143349164281, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
       propertyPath: partExplosionForce
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5421441367889513520, guid: 5869c3befab26904b9839d96d2203cb3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
