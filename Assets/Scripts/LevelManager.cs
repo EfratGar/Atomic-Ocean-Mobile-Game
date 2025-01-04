@@ -13,13 +13,10 @@ public class LevelManager : MonoBehaviour
     private const int VictorySceneIndex = 7;
     private const int GameOverSceneIndex = 8;
     [SerializeField] private float delayBetweenLevels;
+    private bool _wasEndSceneLoaded;
 
     public event Action LevelCompleted = delegate { };
 
-    private void Awake()
-    {
-        Application.targetFrameRate = 60;
-    }
     private void Start()
     {
         Monster.OnMonsterDied += OnMonsterDied;
@@ -28,6 +25,7 @@ public class LevelManager : MonoBehaviour
 
         if (player != null)
             player.YouDiedPopUp += () => LoadLevel(GameOverSceneIndex, 2);
+        Application.targetFrameRate = 60;
     }
 
     private void OnDestroy()
@@ -60,11 +58,17 @@ public class LevelManager : MonoBehaviour
         if(delay > 0)
             await Task.Delay(TimeSpan.FromSeconds(delay));
 
+        bool isNextSceneEndScene = IsNextSceneEndScene(nextLevelIndex);
+        if (isNextSceneEndScene && _wasEndSceneLoaded)
+            return;
         levelIndex = nextLevelIndex;
         AsyncOperation loadLevelOperation =
             SceneManager.LoadSceneAsync(GetLevelSceneName(levelIndex), LoadSceneMode.Additive);
-        if (IsNextSceneEndScene(nextLevelIndex))
+        if (isNextSceneEndScene)
+        {
+            _wasEndSceneLoaded = true;
             loadLevelOperation.completed += (_) => OnEndSceneLoaded();
+        }
         else loadLevelOperation.completed += (_) => CalculateNumberOfMonstersInLevel();
     }
 

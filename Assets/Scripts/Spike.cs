@@ -1,4 +1,3 @@
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Spike : MonoBehaviour
