@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: -6
+  opposingTag: Player
 --- !u!114 &2396842163419291053
 MonoBehaviour:
   m_ObjectHideFlags: 0
