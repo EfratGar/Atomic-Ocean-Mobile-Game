@@ -1086,7 +1086,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: be8013adb0004294ab9289b8585b643c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2d1c4d2074b97434aa8d9e2b609603b5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1689,7 +1689,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 20
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1812,7 +1812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5675437803220377036, guid: 03f9ba266c20da34d86c2a120e308c6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.03
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 5675437803220377036, guid: 03f9ba266c20da34d86c2a120e308c6d, type: 3}
       propertyPath: m_LocalPosition.y
